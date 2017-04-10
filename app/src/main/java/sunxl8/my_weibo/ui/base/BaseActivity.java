@@ -10,12 +10,18 @@ import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import rx.functions.Action1;
+import sunxl8.my_weibo.R;
 
 
 /**
@@ -26,6 +32,13 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
 
     protected T mPresenter;
     protected Unbinder mUnbinder;
+
+    @Nullable
+    @BindView(R.id.tv_topbar_title)
+    protected TextView mTitle;
+    @Nullable
+    @BindView(R.id.iv_topbar_back)
+    ImageView mBack;
 
     private AlertDialog dialog;
 
@@ -40,6 +53,12 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         super.onCreate(savedInstanceState);
         setContentView(setContentViewId());
         mUnbinder = ButterKnife.bind(this);
+        if (mBack != null) {
+            RxView.clicks(mBack)
+                    .subscribe(aVoid -> {
+                        finish();
+                    });
+        }
         initData();
         initView();
     }
