@@ -23,7 +23,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         mContext = this;
         Utils.init(this);
-        Logger.init("my-reader")
+        Logger.init("my-weibo")
                 .methodCount(3)
                 .hideThreadInfo()
                 .logLevel(LogLevel.FULL)
