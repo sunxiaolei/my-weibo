@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/bg_navigationbar_friendattention"/>
+            android:src="@drawable/selector_navigationbar_friendattention"/>
 
         <TextView
             android:id="@+id/tv_navigation_name"
@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/bg_navigationbar_radar"/>
+            android:src="@drawable/selector_navigationbar_radar"/>
     </RelativeLayout>
 
     <TextView

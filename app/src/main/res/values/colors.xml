@@ -2,11 +2,13 @@
 <resources>
     <color name="colorPrimary">#DCDCDC</color>
     <color name="colorPrimaryDark">#EEEEEE</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#FF8200</color>
     <color name="colorBgTabbar">#EEEEEE</color>
     <color name="colorLineRadar">#000000</color>
 
 
     <color name="colorTextTabbar">#666666</color>
+    <color name="colorTextNavigation">#666666</color>
+    <color name="colorTextNavigationHighlight">#FF8200</color>
     <color name="colorTextRadar">#EEEEEE</color>
 </resources>

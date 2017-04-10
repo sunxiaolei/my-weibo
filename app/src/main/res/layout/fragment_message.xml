@@ -20,7 +20,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:gravity="center_vertical"
-            android:text="@string/navigation_findgroup"/>
+            android:text="@string/navigation_findgroup"
+            android:textColor="@drawable/selector_navigationbar_text"/>
 
         <TextView
             android:id="@+id/tv_navigation_message"
@@ -37,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/bg_navigationbar_newchat"/>
+            android:src="@drawable/selector_navigationbar_newchat"/>
     </RelativeLayout>
 
     <TextView
