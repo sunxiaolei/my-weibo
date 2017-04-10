@@ -10,6 +10,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/layout_tabbar_home"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -32,6 +33,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_tabbar_message"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -73,6 +75,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_tabbar_discover"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -95,6 +98,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_tabbar_profile"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

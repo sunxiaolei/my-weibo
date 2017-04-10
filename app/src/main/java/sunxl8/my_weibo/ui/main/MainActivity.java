@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.ActivityEvent;
@@ -21,6 +22,14 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.layout_container)
     FrameLayout mLayout;
+    @BindView(R.id.layout_tabbar_home)
+    LinearLayout layoutHome;
+    @BindView(R.id.layout_tabbar_message)
+    LinearLayout layoutMessage;
+    @BindView(R.id.layout_tabbar_discover)
+    LinearLayout layoutDiscover;
+    @BindView(R.id.layout_tabbar_profile)
+    LinearLayout layoutProfile;
     @BindView(R.id.iv_tabbar_home)
     ImageView mViewHome;
     @BindView(R.id.iv_tabbar_message)
@@ -57,22 +66,22 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         setTabSelection(0);
-        RxView.clicks(mViewHome)
+        RxView.clicks(layoutHome)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(aVoid -> {
                     setTabSelection(0);
                 });
-        RxView.clicks(mViewMessage)
+        RxView.clicks(layoutMessage)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(aVoid -> {
                     setTabSelection(1);
                 });
-        RxView.clicks(mViewDiscover)
+        RxView.clicks(layoutDiscover)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(aVoid -> {
                     setTabSelection(2);
                 });
-        RxView.clicks(mViewProfile)
+        RxView.clicks(layoutProfile)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(aVoid -> {
                     setTabSelection(3);

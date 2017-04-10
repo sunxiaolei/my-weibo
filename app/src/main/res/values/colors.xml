@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#DCDCDC</color>
-    <color name="colorPrimaryDark">#EEEEEE</color>
+    <color name="colorPrimary">#424242</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#FF8200</color>
-    <color name="colorBgTabbar">#EEEEEE</color>
+    <color name="colorBgTabbar">#FFFFFF</color>
     <color name="colorLineRadar">#000000</color>
     <color name="colorLineCommon">#DCDCDC</color>
-    <color name="colorBgCommon">#EEEEEE</color>
-    <color name="colorBgCommonHighlight">#DDDDDD</color>
+    <color name="colorBgDefault">#EEEEEE</color>
+    <color name="colorBgCommon">#FFFFFF</color>
+    <color name="colorBgCommonHighlight">#9E9E9E</color>
 
 
     <color name="colorTextTabbar">#666666</color>
-    <color name="colorTextNavigation">#666666</color>
+    <color name="colorTextNavigation">#333333</color>
     <color name="colorTextNavigationHighlight">#FF8200</color>
     <color name="colorTextRadar">#EEEEEE</color>
     <color name="colorTextSettingItem">#333333</color>

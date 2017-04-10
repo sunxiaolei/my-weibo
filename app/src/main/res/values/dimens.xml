@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="tabbar_text_size">11sp</dimen>
     <dimen name="radar_text_size">17sp</dimen>
+    <dimen name="navigation_text_size">17sp</dimen>
     <dimen name="activity_title_text_size">17sp</dimen>
     <dimen name="setting_item_text_size">15sp</dimen>
 </resources>
