@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">my-weibo</string>
+    <string name="tabbar_home">微博</string>
+    <string name="tabbar_message">消息</string>
+    <string name="tabbar_discover">发现</string>
+    <string name="tabbar_profile">我</string>
 </resources>
