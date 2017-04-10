@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#EEEEEE</color>
+    <color name="colorPrimaryDark">#EEEEEE</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorBgTabbar">#EEEEEE</color>
+    <color name="colorLineRadar">#000000</color>
+
+
     <color name="colorTextTabbar">#666666</color>
+    <color name="colorTextRadar">#EEEEEE</color>
 </resources>
