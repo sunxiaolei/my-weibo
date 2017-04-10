@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EEEEEE</color>
+    <color name="colorPrimary">#DCDCDC</color>
     <color name="colorPrimaryDark">#EEEEEE</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBgTabbar">#EEEEEE</color>

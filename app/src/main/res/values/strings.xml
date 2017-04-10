@@ -7,4 +7,8 @@
     <string name="navigation_radar">雷达</string>
     <string name="navigation_scan">扫一扫</string>
     <string name="navigation_calltaxi">打车</string>
+    <string name="navigation_findgroup">发现群</string>
+    <string name="navigation_message">消息</string>
+    <string name="navigation_newchat">发起聊天</string>
+    <string name="navigation_privatechat">私密聊天</string>
 </resources>

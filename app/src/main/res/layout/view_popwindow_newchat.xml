@@ -9,13 +9,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/popover_icon_radar"
-        android:drawablePadding="20dp"
+        android:drawableLeft="@drawable/popover_icon_newchat"
+        android:drawablePadding="15dp"
         android:gravity="center_vertical"
         android:minHeight="45dp"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
-        android:text="@string/navigation_radar"
+        android:text="@string/navigation_newchat"
         android:textColor="@color/colorTextRadar"
         android:textSize="@dimen/radar_text_size"/>
 
@@ -27,31 +27,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/popover_icon_qrcode"
+        android:drawableLeft="@drawable/popover_icon_privatechat"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
         android:minHeight="45dp"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
-        android:text="@string/navigation_scan"
-        android:textColor="@color/colorTextRadar"
-        android:textSize="@dimen/radar_text_size"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/colorLineRadar"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/popover_icon_didi"
-        android:drawablePadding="15dp"
-        android:gravity="center_vertical"
-        android:minHeight="45dp"
-        android:paddingEnd="20dp"
-        android:paddingStart="20dp"
-        android:text="@string/navigation_calltaxi"
+        android:text="@string/navigation_privatechat"
         android:textColor="@color/colorTextRadar"
         android:textSize="@dimen/radar_text_size"/>
 
