@@ -10,6 +10,7 @@ import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
 import butterknife.BindView;
+import rx.functions.Action1;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.base.BaseActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
@@ -17,6 +18,7 @@ import sunxl8.my_weibo.ui.discover.DiscoverFragment;
 import sunxl8.my_weibo.ui.home.HomeFragment;
 import sunxl8.my_weibo.ui.message.MessageFragment;
 import sunxl8.my_weibo.ui.profile.ProfileFragment;
+import sunxl8.my_weibo.widget.AddView;
 
 public class MainActivity extends BaseActivity {
 
@@ -40,6 +42,8 @@ public class MainActivity extends BaseActivity {
     ImageView mViewProfile;
     @BindView(R.id.iv_tabbar_add)
     ImageView mViewAdd;
+    @BindView(R.id.view_add)
+    AddView viewAdd;
 
 
     private FragmentManager fm;
@@ -85,6 +89,11 @@ public class MainActivity extends BaseActivity {
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(aVoid -> {
                     setTabSelection(3);
+                });
+        RxView.clicks(mViewAdd)
+                .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    viewAdd.show();
                 });
     }
 

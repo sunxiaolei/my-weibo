@@ -24,4 +24,8 @@
     <string name="setting_about">关于微博</string>
     <string name="setting_clean_cache">清除缓存</string>
     <string name="setting_quit">退出微博</string>
+    <string name="add_compose_idea">文字</string>
+    <string name="add_compose_capture">拍摄</string>
+    <string name="add_compose_picture">相册</string>
+    <string name="add_compose_live">直播</string>
 </resources>

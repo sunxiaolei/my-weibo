@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_view_add_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBgCommon"
+    android:clipChildren="false"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <LinearLayout
+        android:id="@+id/layout_view_add_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="50dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_view_add_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/add_date_day_text_size"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingBottom="15dp"
+                android:paddingStart="15dp"
+                android:paddingTop="15dp">
+
+                <TextView
+                    android:id="@+id/tv_view_add_week"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:textSize="@dimen/add_date_text_size"/>
+
+                <TextView
+                    android:id="@+id/tv_view_add_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:textSize="@dimen/add_date_text_size"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_view_add_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/colorLineCommon"/>
+
+        <ImageView
+            android:id="@+id/iv_view_add_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/tabbar_compose_icon_cancel"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_view_add_compose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_view_add_bottom"
+        android:layout_marginBottom="150dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_view_add_idea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/tabbar_compose_idea_neo"
+            android:duplicateParentState="true"
+            android:gravity="center_horizontal"
+            android:text="@string/add_compose_idea"
+            android:textColor="@color/colorTextAddView"
+            android:textSize="@dimen/add_compose_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_view_add_capture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/tabbar_compose_capture_neo"
+            android:gravity="center_horizontal"
+            android:text="@string/add_compose_capture"
+            android:textColor="@color/colorTextAddView"
+            android:textSize="@dimen/add_compose_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_view_add_picture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/tabbar_compose_picture_neo"
+            android:gravity="center_horizontal"
+            android:text="@string/add_compose_picture"
+            android:textColor="@color/colorTextAddView"
+            android:textSize="@dimen/add_compose_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_view_add_live"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/tabbar_compose_live_neo"
+            android:gravity="center_horizontal"
+            android:text="@string/add_compose_live"
+            android:textColor="@color/colorTextAddView"
+            android:textSize="@dimen/add_compose_text_size"/>
+    </LinearLayout>
+
+</RelativeLayout>

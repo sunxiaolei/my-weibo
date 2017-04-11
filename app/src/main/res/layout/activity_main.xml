@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/activity_main"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:fitsSystemWindows="true">
 
-    <include
-        android:id="@+id/bottom_tabbar"
-        layout="@layout/bottom_tabbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/layout_container"
+        <include
+            android:id="@+id/bottom_tabbar"
+            layout="@layout/bottom_tabbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"/>
+
+        <FrameLayout
+            android:id="@+id/layout_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom_tabbar"/>
+    </RelativeLayout>
+
+    <sunxl8.my_weibo.widget.AddView
+        android:id="@+id/view_add"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_tabbar"/>
-</RelativeLayout>
+        android:layout_height="match_parent"/>
+
+
+</FrameLayout>
