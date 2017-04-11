@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import rx.functions.Action1;
 import sunxl8.my_weibo.R;
+import sunxl8.myutils.StatusBarUtils;
 
 
 /**
@@ -46,6 +47,7 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     @CallSuper
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        StatusBarUtils.StatusBarLightMode(this);
         mPresenter = createPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);
