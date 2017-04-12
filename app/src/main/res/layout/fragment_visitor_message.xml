@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorBgTabbar"
+        android:elevation="3dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:id="@+id/tv_navigation_message"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/navigation_message"
+            android:textColor="@color/colorTextNavigation"
+            android:textSize="@dimen/navigation_text_size"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/visitordiscover_image_message"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:gravity="center"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="@string/visitor_message_hint"
+        android:textColor="@color/colorTextVisitor"
+        android:textSize="13sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_visitor_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_common_btn"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:text="@string/register"
+            android:textColor="@color/colorTextBtnHighlight"
+            android:textSize="@dimen/common_btn_text_size"/>
+
+        <Button
+            android:id="@+id/btn_visitor_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_common_btn"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:text="@string/login"
+            android:textColor="@color/colorTextBtn"
+            android:textSize="@dimen/common_btn_text_size"/>
+    </LinearLayout>
+
+</LinearLayout>

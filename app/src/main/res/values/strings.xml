@@ -15,6 +15,7 @@
     <string name="navigation_addfriend">添加好友</string>
     <string name="navigation_profile">我</string>
     <string name="setting_account_manage">账号管理</string>
+    <string name="setting_weibo_hot">微博热点</string>
     <string name="setting_account_security">账号与安全</string>
     <string name="setting_message">消息设置</string>
     <string name="setting_shield">屏蔽设置</string>
@@ -28,4 +29,12 @@
     <string name="add_compose_capture">拍摄</string>
     <string name="add_compose_picture">相册</string>
     <string name="add_compose_live">直播</string>
+    <string name="register">注册</string>
+    <string name="login">登录</string>
+    <string name="visitor_home_hint">关注一些人，看看有什么惊喜</string>
+    <string name="go_attention">去关注</string>
+    <string name="visitor_message_hint">登陆后，别人评论你的微博，给你发消息，都会在这里收到通知</string>
+    <string name="attention">关注</string>
+    <string name="attention_hint">快看看大家都在关注谁</string>
+    <string name="visitor_profile_hint">登陆后，你的微博、相册、个人资料会显示在这里，展示给他人</string>
 </resources>

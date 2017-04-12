@@ -68,7 +68,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
-            android:background="@drawable/bg_tabbar_add"
+            android:background="@drawable/selector_tabbar_add"
             android:scaleType="center"
             android:src="@drawable/tabbar_add"/>
 

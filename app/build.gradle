@@ -65,4 +65,6 @@ dependencies {
     compile 'com.github.sunxiaolei:my-utils:1.0.2'
     //weiboSDK
     compile 'com.sina.weibo.sdk:core:1.0.0:openDefaultRelease@aar'
+    //circleimageview
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }

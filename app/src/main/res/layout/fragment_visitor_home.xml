@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorBgTabbar"
+        android:elevation="3dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp">
+
+        <TextView
+            android:id="@+id/tv_navigation_register"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical"
+            android:text="@string/register"
+            android:textColor="@color/colorTextNavigationHighlight"
+            android:textSize="@dimen/navigation_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_navigation_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/tabbar_home"
+            android:textColor="@color/colorTextNavigation"
+            android:textSize="@dimen/navigation_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_navigation_login"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:text="@string/login"
+            android:textColor="@color/colorTextNavigationHighlight"
+            android:textSize="@dimen/navigation_text_size"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="80dp">
+
+        <ImageView
+            android:id="@+id/iv_visitor_home_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/visitordiscover_feed_image_house"/>
+
+        <ImageView
+            android:id="@+id/iv_visitor_home_smallicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/visitordiscover_feed_image_smallicon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/iv_visitor_home_house"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorBgDefault"
+            android:paddingTop="35dp"
+            android:text="@string/visitor_home_hint"
+            android:textColor="@color/colorTextVisitor"
+            android:textSize="13sp"/>
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/selector_common_btn"
+        android:gravity="center"
+        android:minHeight="40dp"
+        android:text="@string/go_attention"
+        android:textColor="@color/colorTextBtnHighlight"
+        android:textSize="@dimen/common_btn_text_size"/>
+
+</LinearLayout>

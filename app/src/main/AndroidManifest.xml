@@ -8,14 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.MainActivity">
+        <activity
+            android:name=".ui.SplashActivity"
+            android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".ui.visitor.VisitorMainActivity"/>
         <activity android:name=".ui.setting.SettingActivity"/>
+        <activity android:name=".ui.visitor.VisitorSettingActivity"/>
     </application>
 
 </manifest>

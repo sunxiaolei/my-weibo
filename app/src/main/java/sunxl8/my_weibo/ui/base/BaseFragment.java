@@ -28,8 +28,8 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
         View view = inflater.inflate(setContentViewId(), container, false);
         mUnbinder = ButterKnife.bind(this, view);
         mActivity = (BaseActivity) getActivity();
-        if (mPresenter == null) {
-            mPresenter = createPresenter();
+        mPresenter = createPresenter();
+        if (mPresenter != null) {
             mPresenter.attachView(this);
         }
         initData();

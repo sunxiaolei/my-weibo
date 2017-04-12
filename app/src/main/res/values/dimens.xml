@@ -10,4 +10,5 @@
     <dimen name="add_compose_text_size">13sp</dimen>
     <dimen name="add_date_day_text_size">60sp</dimen>
     <dimen name="add_date_text_size">13sp</dimen>
+    <dimen name="common_btn_text_size">15sp</dimen>
 </resources>

@@ -9,6 +9,8 @@
     <color name="colorBgDefault">#EEEEEE</color>
     <color name="colorBgCommon">#FFFFFF</color>
     <color name="colorBgCommonHighlight">#9E9E9E</color>
+    <color name="colorViewSwitchOn">#55EE00</color>
+    <color name="colorViewSwitchOff">#EEEEEE</color>
 
 
     <color name="colorTextTabbar">#666666</color>
@@ -19,4 +21,7 @@
     <color name="colorTextSettingItem">#333333</color>
     <color name="colorTextQuit">#DD2200</color>
     <color name="colorTextAddView">#666666</color>
+    <color name="colorTextVisitor">#999999</color>
+    <color name="colorTextBtn">#666666</color>
+    <color name="colorTextBtnHighlight">#FF8200</color>
 </resources>
