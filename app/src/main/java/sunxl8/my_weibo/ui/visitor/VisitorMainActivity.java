@@ -1,5 +1,6 @@
 package sunxl8.my_weibo.ui.visitor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,7 +11,9 @@ import android.widget.LinearLayout;
 import com.jakewharton.rxbinding.view.RxView;
 import com.orhanobut.logger.Logger;
 import com.sina.weibo.sdk.auth.AuthInfo;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
+import com.sina.weibo.sdk.auth.sso.AccessTokenKeeper;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.trello.rxlifecycle.android.ActivityEvent;
@@ -20,6 +23,7 @@ import sunxl8.my_weibo.Constant;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.base.BaseActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
+import sunxl8.my_weibo.ui.main.MainActivity;
 import sunxl8.my_weibo.widget.AddView;
 
 public class VisitorMainActivity extends BaseActivity {
@@ -56,6 +60,7 @@ public class VisitorMainActivity extends BaseActivity {
 
     private AuthInfo mAuthInfo;
     private SsoHandler mSsoHandler;
+    private Oauth2AccessToken mAccessToken;
 
     @Override
     protected IPresenter createPresenter() {
@@ -177,15 +182,29 @@ public class VisitorMainActivity extends BaseActivity {
     }
 
     public void login() {
-        mSsoHandler.authorizeWeb(new WeiboAuthListener() {
+        mSsoHandler.authorize(new WeiboAuthListener() {
             @Override
             public void onComplete(Bundle bundle) {
-                showToast("登录成功");
+                mAccessToken = Oauth2AccessToken.parseAccessToken(bundle);
+                if (mAccessToken.isSessionValid()) {
+                    // 保存 Token 到 SharedPreferences
+                    AccessTokenKeeper.writeAccessToken(VisitorMainActivity.this, mAccessToken);
+                    showToast(getString(R.string.login_success));
+                    finish();
+                    startActivity(new Intent(VisitorMainActivity.this, MainActivity.class));
+                } else {
+                    // 会收到 Code：
+                    // 1. 当您未在平台上注册的应用程序的包名与签名时；
+                    // 2. 当您注册的应用程序包名与签名不正确时；
+                    // 3. 当您在平台上注册的包名和签名与您当前测试的应用的包名和签名不匹配时。
+                    String code = bundle.getString("code");
+                    showToast(getString(R.string.login_fail) + "-code:" + code);
+                }
             }
 
             @Override
             public void onWeiboException(WeiboException e) {
-                Logger.e(e,"onWeiboException()");
+                Logger.e(e, "onWeiboException()");
             }
 
             @Override

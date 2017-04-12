@@ -6,10 +6,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
+import com.sina.weibo.sdk.auth.sso.AccessTokenKeeper;
+
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import sunxl8.my_weibo.R;
+import sunxl8.my_weibo.ui.main.MainActivity;
 import sunxl8.my_weibo.ui.visitor.VisitorMainActivity;
 
 /**
@@ -17,6 +20,8 @@ import sunxl8.my_weibo.ui.visitor.VisitorMainActivity;
  */
 
 public class SplashActivity extends AppCompatActivity {
+
+    private Intent mStartIntent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,11 +31,16 @@ public class SplashActivity extends AppCompatActivity {
         img.setBackgroundResource(R.drawable.surprise_background_default);
         setContentView(img);
 
+        if (AccessTokenKeeper.readAccessToken(this).isSessionValid()) {
+            mStartIntent = new Intent(this, MainActivity.class);
+        } else {
+            mStartIntent = new Intent(this, VisitorMainActivity.class);
+        }
+
         Observable.timer(2000, TimeUnit.MILLISECONDS)
                 .subscribe(aLong -> {
                     finish();
-                    startActivity(new Intent(SplashActivity.this, VisitorMainActivity.class));
-                    overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+                    startActivity(mStartIntent);
                 });
     }
 }

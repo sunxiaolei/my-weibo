@@ -37,4 +37,6 @@
     <string name="attention">关注</string>
     <string name="attention_hint">快看看大家都在关注谁</string>
     <string name="visitor_profile_hint">登陆后，你的微博、相册、个人资料会显示在这里，展示给他人</string>
+    <string name="login_success">登陆成功</string>
+    <string name="login_fail">登陆失败</string>
 </resources>
