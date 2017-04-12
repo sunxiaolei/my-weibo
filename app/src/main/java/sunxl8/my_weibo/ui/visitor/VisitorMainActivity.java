@@ -1,5 +1,6 @@
 package sunxl8.my_weibo.ui.visitor;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
@@ -7,9 +8,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.jakewharton.rxbinding.view.RxView;
+import com.orhanobut.logger.Logger;
+import com.sina.weibo.sdk.auth.AuthInfo;
+import com.sina.weibo.sdk.auth.WeiboAuthListener;
+import com.sina.weibo.sdk.auth.sso.SsoHandler;
+import com.sina.weibo.sdk.exception.WeiboException;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
 import butterknife.BindView;
+import sunxl8.my_weibo.Constant;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.base.BaseActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
@@ -47,6 +54,9 @@ public class VisitorMainActivity extends BaseActivity {
     private VisitorDiscoverFragment mDiscoverFragment;
     private VisitorProfileFragment mProfileFragment;
 
+    private AuthInfo mAuthInfo;
+    private SsoHandler mSsoHandler;
+
     @Override
     protected IPresenter createPresenter() {
         return null;
@@ -59,6 +69,8 @@ public class VisitorMainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        mAuthInfo = new AuthInfo(this, Constant.APP_KEY, Constant.REDIRECT_URL, Constant.SCOPE);
+        mSsoHandler = new SsoHandler(this, mAuthInfo);
         fm = getSupportFragmentManager();
     }
 
@@ -162,6 +174,25 @@ public class VisitorMainActivity extends BaseActivity {
         if (mProfileFragment != null) {
             ft.hide(mProfileFragment);
         }
+    }
+
+    public void login() {
+        mSsoHandler.authorizeWeb(new WeiboAuthListener() {
+            @Override
+            public void onComplete(Bundle bundle) {
+                showToast("登录成功");
+            }
+
+            @Override
+            public void onWeiboException(WeiboException e) {
+                Logger.e(e,"onWeiboException()");
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        });
     }
 
 }
