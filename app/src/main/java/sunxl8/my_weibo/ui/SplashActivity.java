@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(img);
 
         if (AccessTokenKeeper.readAccessToken(this).isSessionValid()) {
-            BaseApplication.mAccessToken = AccessTokenKeeper.readAccessToken(this);
+            BaseApplication.token = AccessTokenKeeper.readAccessToken(this).getToken();
             mStartIntent = new Intent(this, MainActivity.class);
         } else {
             mStartIntent = new Intent(this, VisitorMainActivity.class);

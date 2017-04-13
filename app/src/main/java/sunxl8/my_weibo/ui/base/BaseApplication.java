@@ -19,7 +19,7 @@ public class BaseApplication extends Application {
 
     public static String account;
 
-    public static Oauth2AccessToken mAccessToken;
+    public static String token;
 
     @Override
     public void onCreate() {

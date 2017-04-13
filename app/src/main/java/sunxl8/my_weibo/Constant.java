@@ -12,4 +12,9 @@ public class Constant {
             + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
             + "follow_app_official_microblog," + "invitation_write";
 
+    public static final String API_SERVER = "https://api.weibo.com/2/";
+    public static final String API_USERS = API_SERVER + "users/";
+
+    public static final String KEY_ACCESS_TOKEN = "access_token";
+
 }
