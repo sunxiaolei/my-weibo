@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import sunxl8.my_weibo.R;
+import sunxl8.my_weibo.ui.base.BaseApplication;
 import sunxl8.my_weibo.ui.main.MainActivity;
 import sunxl8.my_weibo.ui.visitor.VisitorMainActivity;
 
@@ -32,6 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(img);
 
         if (AccessTokenKeeper.readAccessToken(this).isSessionValid()) {
+            BaseApplication.mAccessToken = AccessTokenKeeper.readAccessToken(this);
             mStartIntent = new Intent(this, MainActivity.class);
         } else {
             mStartIntent = new Intent(this, VisitorMainActivity.class);

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
 import sunxl8.myutils.Utils;
 
@@ -17,6 +18,8 @@ public class BaseApplication extends Application {
     private static Context mContext;
 
     public static String account;
+
+    public static Oauth2AccessToken mAccessToken;
 
     @Override
     public void onCreate() {

@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_focused.png",
+        "source": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\src\\main\\res\\drawable-xxhdpi\\ic_com_sina_weibo_sdk_login_with_account_text_focused.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\weibosdk_empty_failed.png",
+        "source": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\build\\intermediates\\exploded-aar\\com.sina.weibo.sdk\\core\\1.0.0\\openDefaultRelease\\res\\drawable-xxhdpi-v4\\weibosdk_empty_failed.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png",
+        "source": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\src\\main\\res\\drawable-xxhdpi\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_pressed.png",
+        "source": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\src\\main\\res\\drawable-xxhdpi\\ic_com_sina_weibo_sdk_login_with_account_text_pressed.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed.png",
+        "source": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\src\\main\\res\\drawable-xxhdpi\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png",
+        "source": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\src\\main\\res\\drawable-xxhdpi\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png"
+    },
+    {
+        "merged": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_normal.png",
+        "source": "D:\\AndroidWorkSpace\\my-weibo\\weiboSDK\\src\\main\\res\\drawable-xxhdpi\\ic_com_sina_weibo_sdk_login_with_account_text_normal.png"
+    }
+]
