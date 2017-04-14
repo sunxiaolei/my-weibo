@@ -88,11 +88,11 @@ public class SwitchView extends View {
     }
 
     private void init(AttributeSet attrs) {
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.app);
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.SwitchView);
         try {
-            colorOn = a.getColor(R.styleable.app_color_on, DEFAULT_COLOR_ON);
-            colorOff = a.getColor(R.styleable.app_color_off, DEFAULT_COLOR_OFF);
-            isChecked = a.getBoolean(R.styleable.app_checked, false);
+            colorOn = a.getColor(R.styleable.SwitchView_color_on, DEFAULT_COLOR_ON);
+            colorOff = a.getColor(R.styleable.SwitchView_color_off, DEFAULT_COLOR_OFF);
+            isChecked = a.getBoolean(R.styleable.SwitchView_checked, false);
 
             state = isChecked ? STATE_SWITCH_ON : STATE_SWITCH_OFF;
         } finally {

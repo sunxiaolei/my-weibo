@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="app">
-        <attr name="checked" format="boolean" />
-        <attr name="color_on" format="color" />
-        <attr name="color_off" format="color" />
+    <declare-styleable name="SwitchView">
+        <attr name="checked" format="boolean"/>
+        <attr name="color_on" format="color"/>
+        <attr name="color_off" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ProfileItemView">
+        <attr name="title" format="string"/>
+        <attr name="icon" format="reference"/>
+        <attr name="subhead" format="string"/>
     </declare-styleable>
 </resources>

@@ -43,4 +43,11 @@
     <string name="profile_membership_vip">VIP</string>
     <string name="weibo">微博</string>
     <string name="fans">粉丝</string>
+    <string name="profile_description_null">简介：暂无介绍</string>
+    <string name="new_friend">新的好友</string>
+    <string name="my_praise">我的赞</string>
+    <string name="my_photo">我的相册</string>
+    <string name="weibo_wallet">微博钱包</string>
+    <string name="weibo_sport">微博运动</string>
+    <string name="avoid_flow">免流量</string>
 </resources>
