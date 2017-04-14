@@ -1,5 +1,6 @@
 package sunxl8.my_weibo.ui.profile;
 
+import sunxl8.my_weibo.entity.UserInfo;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.ui.base.IView;
 
@@ -10,10 +11,10 @@ import sunxl8.my_weibo.ui.base.IView;
 public interface ProfileContract {
 
     interface View extends IView {
-
+        void setUserInfo(UserInfo info);
     }
 
     interface Presenter extends IPresenter<View> {
-
+        void getUserInfo();
     }
 }

@@ -45,7 +45,7 @@ public class NetworkManager {
                     .baseUrl(baseUrl)
                     .client(getHttpClient(headers))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
         return commonClient;

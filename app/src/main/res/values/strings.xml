@@ -39,4 +39,8 @@
     <string name="visitor_profile_hint">登陆后，你的微博、相册、个人资料会显示在这里，展示给他人</string>
     <string name="login_success">登陆成功</string>
     <string name="login_fail">登陆失败</string>
+    <string name="profile_membership_nomal">普通用户</string>
+    <string name="profile_membership_vip">VIP</string>
+    <string name="weibo">微博</string>
+    <string name="fans">粉丝</string>
 </resources>
