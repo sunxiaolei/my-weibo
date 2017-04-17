@@ -1,5 +1,8 @@
 package sunxl8.my_weibo.ui.home;
 
+import java.util.Map;
+
+import sunxl8.my_weibo.entity.HomeTimeline;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.ui.base.IView;
 
@@ -10,10 +13,10 @@ import sunxl8.my_weibo.ui.base.IView;
 public interface HomeContract {
 
     interface View extends IView {
-
+        void setHomeTimeline(HomeTimeline homeTimeline);
     }
 
     interface Presenter extends IPresenter<View> {
-
+        void getHomeTimeline(Map<String, String> params);
     }
 }

@@ -1,5 +1,10 @@
 package sunxl8.my_weibo.ui.home;
 
+import com.trello.rxlifecycle.android.ActivityEvent;
+
+import java.util.Map;
+
+import sunxl8.my_weibo.net.WeiboRequest;
 import sunxl8.my_weibo.ui.base.BaseActivity;
 import sunxl8.my_weibo.ui.base.BasePresenter;
 
@@ -11,5 +16,14 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
 
     protected HomePresenter(BaseActivity activity) {
         super(activity);
+    }
+
+    @Override
+    public void getHomeTimeline(Map<String, String> params) {
+        WeiboRequest.getHomeTimeline(params)
+                .compose(mActivity.bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(timeline -> {
+                    mView.setHomeTimeline(timeline);
+                });
     }
 }
