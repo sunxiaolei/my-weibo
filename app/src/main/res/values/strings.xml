@@ -50,4 +50,5 @@
     <string name="weibo_wallet">微博钱包</string>
     <string name="weibo_sport">微博运动</string>
     <string name="avoid_flow">免流量</string>
+    <string name="from">来自</string>
 </resources>

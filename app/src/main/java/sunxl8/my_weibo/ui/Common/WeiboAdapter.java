@@ -1,6 +1,7 @@
 package sunxl8.my_weibo.ui.Common;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.HomeTimeline;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.utils.WeiboTimeUtils;
+import sunxl8.myutils.StringUtils;
 
 /**
  * Created by sunxl8 on 2017/4/17.
@@ -57,7 +59,9 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         final HomeTimeline.StatusesBean bean = mBeanList.get(position);
         Glide.with(mFragment).load(bean.getUser().getProfile_image_url()).into(holder.ivIcon);
         holder.tvName.setText(bean.getUser().getName());
-        holder.tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()));
+        String from = Html.fromHtml(bean.getSource()).toString();
+        holder.tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
+                (StringUtils.isEmpty(from) ? "" : mFragment.getString(R.string.from) + "  " + from));
         holder.tvContent.setText(bean.getText());
     }
 
