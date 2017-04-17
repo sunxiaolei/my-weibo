@@ -27,4 +27,6 @@
     <color name="colorTextBtnHighlight">#FF8200</color>
     <color name="colorTextProfilePrimary">#333333</color>
     <color name="colorTextProfileSecondary">#999999</color>
+    <color name="colorTextItemPrimary">#333333</color>
+    <color name="colorTextItemSecondary">#999999</color>
 </resources>

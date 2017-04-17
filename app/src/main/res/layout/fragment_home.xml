@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/layout_navigation"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/selector_navigationbar_friendattention" />
+            android:src="@drawable/selector_navigationbar_friendattention"/>
 
         <TextView
             android:id="@+id/tv_navigation_name"
@@ -30,7 +30,7 @@
             android:drawableRight="@drawable/navigationbar_arrow_down"
             android:gravity="center_vertical"
             android:text="name"
-            android:textSize="@dimen/navigation_text_size" />
+            android:textSize="@dimen/navigation_text_size"/>
 
         <ImageView
             android:id="@+id/iv_navigation_radar"
@@ -38,13 +38,12 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/selector_navigationbar_radar" />
+            android:src="@drawable/selector_navigationbar_radar"/>
     </RelativeLayout>
 
-    <TextView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/xrv_fragment_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="home fragment" />
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
