@@ -16,6 +16,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.HomeTimeline;
 import sunxl8.my_weibo.ui.base.BaseFragment;
+import sunxl8.my_weibo.utils.WeiboTimeUtils;
 
 /**
  * Created by sunxl8 on 2017/4/17.
@@ -56,7 +57,7 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         final HomeTimeline.StatusesBean bean = mBeanList.get(position);
         Glide.with(mFragment).load(bean.getUser().getProfile_image_url()).into(holder.ivIcon);
         holder.tvName.setText(bean.getUser().getName());
-        holder.tvFrom.setText(bean.getCreated_at());
+        holder.tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()));
         holder.tvContent.setText(bean.getText());
     }
 

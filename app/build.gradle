@@ -62,7 +62,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     //utils
-    compile 'com.github.sunxiaolei:my-utils:1.0.2'
+    compile 'com.github.sunxiaolei:my-utils:1.0.3'
     //circleimageview
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile project(':weiboSDK')
