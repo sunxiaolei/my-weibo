@@ -80,4 +80,7 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
     //loading
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
+    //bottomsheet
+    compile 'com.flipboard:bottomsheet-core:1.5.3'
+    compile 'com.flipboard:bottomsheet-commons:1.5.3'
 }

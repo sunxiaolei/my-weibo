@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_img_menu_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_common_item"
+        android:clickable="true"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="@string/save_img"
+        android:textColor="@color/colorTextItemPrimary"
+        android:textSize="15sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/colorLineCommon"/>
+
+    <TextView
+        android:id="@+id/tv_img_menu_trans"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_common_item"
+        android:clickable="true"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="@string/trans_weibo"
+        android:textColor="@color/colorTextItemPrimary"
+        android:textSize="15sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/colorLineCommon"/>
+
+    <TextView
+        android:id="@+id/tv_img_menu_praise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_common_item"
+        android:clickable="true"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="@string/praise"
+        android:textColor="@color/colorTextItemPrimary"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tv_img_menu_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/selector_common_item"
+        android:clickable="true"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="@string/cancel"
+        android:textColor="@color/colorTextItemPrimary"
+        android:textSize="15sp"/>
+
+</LinearLayout>

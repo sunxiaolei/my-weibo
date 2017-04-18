@@ -1,7 +1,6 @@
-package sunxl8.my_weibo.ui.common;
+package sunxl8.my_weibo.ui.weibo;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;

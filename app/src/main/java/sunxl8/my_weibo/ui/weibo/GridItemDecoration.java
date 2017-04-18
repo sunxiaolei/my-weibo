@@ -1,4 +1,4 @@
-package sunxl8.my_weibo.ui.common;
+package sunxl8.my_weibo.ui.weibo;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
