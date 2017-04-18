@@ -181,6 +181,14 @@ public class VisitorMainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mSsoHandler != null) {
+            mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
+        }
+    }
+
     public void login() {
         mSsoHandler.authorize(new WeiboAuthListener() {
             @Override

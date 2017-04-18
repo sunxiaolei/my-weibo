@@ -61,6 +61,5 @@ public class VisitorHomeFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        iv.clearAnimation();
     }
 }
