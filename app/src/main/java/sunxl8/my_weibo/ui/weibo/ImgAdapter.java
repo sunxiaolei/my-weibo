@@ -44,7 +44,7 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
         Glide.with(mContext).load(img.getBmiddle_pic()).centerCrop().into(holder.ivImg);
         RxView.clicks(holder.ivImg)
                 .subscribe(aVoid -> {
-                    ImgActivity.startImgActivity(mContext, mImgList);
+                    ImgActivity.startImgActivity(mContext, mImgList, position);
                 });
     }
 

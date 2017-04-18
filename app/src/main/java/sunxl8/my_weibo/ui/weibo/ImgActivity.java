@@ -49,6 +49,7 @@ public class ImgActivity extends BaseActivity {
     BottomSheetLayout bottomSheetLayout;
 
     private List<PicUrl> mPicUrls;
+    private int mPosition;
     private ImgPagAdapter mAdapter;
 
     @Override
@@ -65,6 +66,7 @@ public class ImgActivity extends BaseActivity {
     @Override
     protected void initData() {
         mPicUrls = (List<PicUrl>) getIntent().getSerializableExtra("imgs");
+        mPosition = getIntent().getIntExtra("mPosition", 0);
     }
 
     @Override
@@ -76,6 +78,7 @@ public class ImgActivity extends BaseActivity {
                     tvPage.setText(integer + 1 + "/" + mPicUrls.size());
                 });
         mViewPager.setAdapter(mAdapter);
+        mViewPager.setCurrentItem(mPosition);
         RxView.clicks(ivMore)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(aVoid -> {
@@ -98,9 +101,10 @@ public class ImgActivity extends BaseActivity {
 
     }
 
-    public static void startImgActivity(Context context, List<PicUrl> imgs) {
+    public static void startImgActivity(Context context, List<PicUrl> imgs, int position) {
         Intent intent = new Intent(context, ImgActivity.class);
         intent.putExtra("imgs", (Serializable) imgs);
+        intent.putExtra("mPosition", position);
         context.startActivity(intent);
     }
 
@@ -130,6 +134,7 @@ public class ImgActivity extends BaseActivity {
             pb.setIndeterminateDrawable(doubleBounce);
             Glide.with(ImgActivity.this).load(mPicUrls.get(position).getOriginal_pic())
                     .into(new GlideDrawableImageViewTarget(photoView) {
+
                         @Override
                         public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
                             super.onResourceReady(resource, animation);
@@ -137,8 +142,8 @@ public class ImgActivity extends BaseActivity {
                         }
 
                         @Override
-                        public void onStart() {
-                            super.onStart();
+                        public void onLoadStarted(Drawable placeholder) {
+                            super.onLoadStarted(placeholder);
                             pb.setVisibility(View.VISIBLE);
                         }
 
