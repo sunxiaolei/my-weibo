@@ -11,6 +11,7 @@
     <color name="colorBgCommonHighlight">#9E9E9E</color>
     <color name="colorViewSwitchOn">#55EE00</color>
     <color name="colorViewSwitchOff">#EEEEEE</color>
+    <color name="colorContentKeyword">#507daf</color>
 
 
     <color name="colorTextTabbar">#666666</color>

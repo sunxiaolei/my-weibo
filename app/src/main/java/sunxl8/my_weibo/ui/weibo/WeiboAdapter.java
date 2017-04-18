@@ -18,6 +18,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.HomeTimeline;
 import sunxl8.my_weibo.ui.base.BaseFragment;
+import sunxl8.my_weibo.utils.WeiboTextUtils;
 import sunxl8.my_weibo.utils.WeiboTimeUtils;
 import sunxl8.myutils.StringUtils;
 
@@ -63,7 +64,7 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         String from = Html.fromHtml(bean.getSource()).toString();
         holder.tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
                 (StringUtils.isEmpty(from) ? "" : mFragment.getString(R.string.from) + "  " + from));
-        holder.tvContent.setText(bean.getText());
+        holder.tvContent.setText(WeiboTextUtils.getWeiBoContent(bean.getText()));
 //        holder.rvImg.addItemDecoration(new GridItemDecoration(10));
         holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 3));
         holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls()));
