@@ -1,6 +1,7 @@
-package sunxl8.my_weibo.ui.Common;
+package sunxl8.my_weibo.ui.common;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.jakewharton.rxbinding.view.RxView;
 
 import java.util.List;
 
@@ -39,7 +41,12 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final PicUrl img = mImgList.get(position);
-        Glide.with(mContext).load(img.getThumbnail_pic()).centerCrop().into(holder.ivImg);
+        img.setPic();
+        Glide.with(mContext).load(img.getBmiddle_pic()).centerCrop().into(holder.ivImg);
+        RxView.clicks(holder.ivImg)
+                .subscribe(aVoid -> {
+                    ImgActivity.startImgActivity(mContext, mImgList);
+                });
     }
 
     @Override

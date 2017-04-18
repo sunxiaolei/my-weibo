@@ -25,6 +25,7 @@
         <activity android:name=".ui.setting.SettingActivity"/>
         <activity android:name=".ui.visitor.VisitorSettingActivity"/>
         <activity android:name=".ui.setting.AccountManagerActivity"/>
+        <activity android:name=".ui.common.ImgActivity"/>
     </application>
 
 </manifest>

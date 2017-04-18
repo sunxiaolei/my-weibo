@@ -10,13 +10,12 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.android.FragmentEvent;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.HomeTimeline;
-import sunxl8.my_weibo.ui.Common.WeiboAdapter;
+import sunxl8.my_weibo.ui.common.WeiboAdapter;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.widget.GroupPopWindow;
 import sunxl8.my_weibo.widget.RadarPopWindow;

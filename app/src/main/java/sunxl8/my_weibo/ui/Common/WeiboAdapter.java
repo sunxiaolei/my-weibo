@@ -1,4 +1,4 @@
-package sunxl8.my_weibo.ui.Common;
+package sunxl8.my_weibo.ui.common;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -64,7 +64,7 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         holder.tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
                 (StringUtils.isEmpty(from) ? "" : mFragment.getString(R.string.from) + "  " + from));
         holder.tvContent.setText(bean.getText());
-        holder.rvImg.addItemDecoration(new GridItemDecoration(15));
+        holder.rvImg.addItemDecoration(new GridItemDecoration(10));
         holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 3));
         holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls()));
     }
