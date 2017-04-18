@@ -18,7 +18,7 @@
     <color name="colorTextTitle">#333333</color>
     <color name="colorTextNavigationHighlight">#FF8200</color>
     <color name="colorTextNomalHighlight">#FF8200</color>
-    <color name="colorTextRadar">#EEEEEE</color>
+    <color name="colorTextWhite">#EEEEEE</color>
     <color name="colorTextSettingItem">#333333</color>
     <color name="colorTextQuit">#DD2200</color>
     <color name="colorTextAddView">#666666</color>

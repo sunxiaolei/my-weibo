@@ -16,7 +16,7 @@
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:text="@string/navigation_radar"
-        android:textColor="@color/colorTextRadar"
+        android:textColor="@color/colorTextWhite"
         android:textSize="@dimen/radar_text_size"/>
 
     <View
@@ -34,7 +34,7 @@
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:text="@string/navigation_scan"
-        android:textColor="@color/colorTextRadar"
+        android:textColor="@color/colorTextWhite"
         android:textSize="@dimen/radar_text_size"/>
 
     <View
@@ -52,7 +52,7 @@
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:text="@string/navigation_calltaxi"
-        android:textColor="@color/colorTextRadar"
+        android:textColor="@color/colorTextWhite"
         android:textSize="@dimen/radar_text_size"/>
 
 </LinearLayout>

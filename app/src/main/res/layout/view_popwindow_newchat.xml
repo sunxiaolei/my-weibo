@@ -16,7 +16,7 @@
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:text="@string/navigation_newchat"
-        android:textColor="@color/colorTextRadar"
+        android:textColor="@color/colorTextWhite"
         android:textSize="@dimen/radar_text_size"/>
 
     <View
@@ -34,7 +34,7 @@
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:text="@string/navigation_privatechat"
-        android:textColor="@color/colorTextRadar"
+        android:textColor="@color/colorTextWhite"
         android:textSize="@dimen/radar_text_size"/>
 
 </LinearLayout>

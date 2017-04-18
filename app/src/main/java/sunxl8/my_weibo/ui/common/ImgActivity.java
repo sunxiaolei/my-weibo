@@ -2,17 +2,25 @@ package sunxl8.my_weibo.ui.common;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.github.chrisbanes.photoview.PhotoView;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
+import com.jakewharton.rxbinding.support.v4.view.RxViewPager;
+import com.trello.rxlifecycle.android.ActivityEvent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,6 +40,10 @@ public class ImgActivity extends BaseActivity {
 
     @BindView(R.id.vp_img)
     ViewPager mViewPager;
+    @BindView(R.id.tv_img_page)
+    TextView tvPage;
+    @BindView(R.id.iv_img_more)
+    ImageView ivMore;
 
     private List<PicUrl> mPicUrls;
 
@@ -53,7 +65,11 @@ public class ImgActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        RxViewPager.pageSelections(mViewPager)
+                .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(integer -> {
+                    tvPage.setText(integer + 1 + "/" + mPicUrls.size());
+                });
         mViewPager.setAdapter(new ImgPagAdapter(getImgViews(mPicUrls), mPicUrls));
     }
 
@@ -93,13 +109,34 @@ public class ImgActivity extends BaseActivity {
             container.removeView(mListViews.get(position));
         }
 
-
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = mListViews.get(position);
             PhotoView photoView = (PhotoView) view.findViewById(R.id.iv_img);
             photoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            Glide.with(ImgActivity.this).load(mPicUrls.get(position).getOriginal_pic()).into(photoView);
+            ProgressBar pb = (ProgressBar) view.findViewById(R.id.progress_img);
+            DoubleBounce doubleBounce = new DoubleBounce();
+            pb.setIndeterminateDrawable(doubleBounce);
+            Glide.with(ImgActivity.this).load(mPicUrls.get(position).getOriginal_pic())
+                    .into(new GlideDrawableImageViewTarget(photoView){
+                        @Override
+                        public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
+                            super.onResourceReady(resource, animation);
+                            pb.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onStart() {
+                            super.onStart();
+                            pb.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                            super.onLoadFailed(e, errorDrawable);
+                            pb.setVisibility(View.GONE);
+                        }
+                    });
             container.addView(view, 0);
             return view;
         }
