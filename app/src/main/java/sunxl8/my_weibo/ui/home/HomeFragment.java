@@ -93,7 +93,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         xrvHomeTimeline.setAdapter(mAdapter);
     }
 
-    private void getHomeTimeLine(boolean refresh) {
+    public void getHomeTimeLine(boolean refresh) {
         if (refresh) {
             page = 1;
             if (mAdapter != null) mAdapter.clean();

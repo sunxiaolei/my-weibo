@@ -102,12 +102,18 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    private int selected = -1;
+
     private void setTabSelection(int position) {
         resetBtn();
         FragmentTransaction ft = fm.beginTransaction();
         hideFragments(ft);
         switch (position) {
             case 0:
+                if (selected == position) {
+                    mHomeFragment.getHomeTimeLine(true);
+                    return;
+                }
                 mViewHome.setImageResource(R.drawable.tabbar_home_highlighted);
                 if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
@@ -144,6 +150,7 @@ public class MainActivity extends BaseActivity {
                 }
                 break;
         }
+        selected = position;
         ft.commit();
     }
 
