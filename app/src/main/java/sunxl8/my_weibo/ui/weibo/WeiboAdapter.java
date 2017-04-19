@@ -65,9 +65,11 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         holder.tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
                 (StringUtils.isEmpty(from) ? "" : mFragment.getString(R.string.from) + "  " + from));
         holder.tvContent.setText(WeiboTextUtils.getWeiBoContent(bean.getText()));
-//        holder.rvImg.addItemDecoration(new GridItemDecoration(10));
         holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 3));
         holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls()));
+        holder.tvRetweet.setText(String.valueOf(bean.getReposts_count()));
+        holder.tvComment.setText(String.valueOf(bean.getComments_count()));
+        holder.tvLike.setText(String.valueOf(bean.getAttitudes_count()));
     }
 
     @Override
@@ -87,6 +89,12 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         TextView tvContent;
         @BindView(R.id.rv_item_img)
         RecyclerView rvImg;
+        @BindView(R.id.tv_item_retweet)
+        TextView tvRetweet;
+        @BindView(R.id.tv_item_comment)
+        TextView tvComment;
+        @BindView(R.id.tv_item_like)
+        TextView tvLike;
 
         public ViewHolder(View itemView) {
             super(itemView);
