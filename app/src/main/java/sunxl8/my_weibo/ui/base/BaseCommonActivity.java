@@ -1,6 +1,7 @@
 package sunxl8.my_weibo.ui.base;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
@@ -37,7 +38,9 @@ public abstract class BaseCommonActivity<T extends IPresenter> extends BaseActiv
     @CallSuper
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        StatusBarUtils.StatusBarLightMode(this);
+        StatusBarUtils.from(this)
+                .setLightStatusBar(true)
+                .process(this);
         mPresenter = createPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);

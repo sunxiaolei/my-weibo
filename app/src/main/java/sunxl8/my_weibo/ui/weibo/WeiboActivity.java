@@ -53,8 +53,10 @@ public class WeiboActivity extends BaseSwipeActivity<WeiboPresenter> implements 
     @Override
     protected void initData() {
         bean = (StatusesBean) getIntent().getSerializableExtra("bean");
-        Glide.with(this).load(bean.getUser().getProfile_image_url()).into(ivIcon);
+        Glide.with(this).load(bean.getUser().getAvatar_hd()).into(ivIcon);
         tvName.setText(bean.getUser().getName());
+        tvName.setTextColor(bean.getUser().isVerified()
+                ? getResources().getColor(R.color.colorTextVip) : getResources().getColor(R.color.colorTextItemPrimary));
         String from = Html.fromHtml(bean.getSource()).toString();
         tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
                 (StringUtils.isEmpty(from) ? "" : getString(R.string.from) + "  " + from));

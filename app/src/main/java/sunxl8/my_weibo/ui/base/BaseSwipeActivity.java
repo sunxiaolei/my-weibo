@@ -31,7 +31,7 @@ import sunxl8.myutils.StatusBarUtils;
  * Created by sunxl8 on 2017/4/20.
  */
 
-public abstract class BaseSwipeActivity<T extends IPresenter> extends BaseActivity implements IView,SwipeBackActivityBase {
+public abstract class BaseSwipeActivity<T extends IPresenter> extends BaseActivity implements IView, SwipeBackActivityBase {
 
     protected T mPresenter;
     protected Unbinder mUnbinder;
@@ -48,7 +48,10 @@ public abstract class BaseSwipeActivity<T extends IPresenter> extends BaseActivi
     @CallSuper
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        StatusBarUtils.StatusBarLightMode(this);
+        //TODO
+        StatusBarUtils.from(this)
+                .setLightStatusBar(true)
+                .process(this);
         mPresenter = createPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);

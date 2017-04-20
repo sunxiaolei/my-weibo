@@ -30,4 +30,5 @@
     <color name="colorTextProfileSecondary">#999999</color>
     <color name="colorTextItemPrimary">#333333</color>
     <color name="colorTextItemSecondary">#999999</color>
+    <color name="colorTextVip">#f46200</color>
 </resources>
