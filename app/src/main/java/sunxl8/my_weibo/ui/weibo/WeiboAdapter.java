@@ -1,20 +1,25 @@
 package sunxl8.my_weibo.ui.weibo;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.jakewharton.rxbinding.view.RxView;
+import com.trello.rxlifecycle.android.FragmentEvent;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import rx.functions.Action1;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.HomeTimeline;
 import sunxl8.my_weibo.ui.base.BaseFragment;
@@ -70,6 +75,11 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         holder.tvRetweet.setText(String.valueOf(bean.getReposts_count()));
         holder.tvComment.setText(String.valueOf(bean.getComments_count()));
         holder.tvLike.setText(String.valueOf(bean.getAttitudes_count()));
+        RxView.clicks(holder.layout)
+                .compose(mFragment.bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    mFragment.getActivity().startActivity(new Intent(mFragment.getActivity(), WeiboActivity.class));
+                });
     }
 
     @Override
@@ -79,6 +89,8 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.layout_item_weibo)
+        LinearLayout layout;
         @BindView(R.id.iv_item_user_icon)
         CircleImageView ivIcon;
         @BindView(R.id.tv_item_name)

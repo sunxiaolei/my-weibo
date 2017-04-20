@@ -20,14 +20,14 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
 
     protected T mPresenter;
     private Unbinder mUnbinder;
-    protected BaseActivity mActivity;
+    protected BaseCommonActivity mActivity;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(setContentViewId(), container, false);
         mUnbinder = ButterKnife.bind(this, view);
-        mActivity = (BaseActivity) getActivity();
+        mActivity = (BaseCommonActivity) getActivity();
         mPresenter = createPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);

@@ -21,12 +21,12 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 import butterknife.BindView;
 import sunxl8.my_weibo.Constant;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseActivity;
+import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.ui.main.MainActivity;
 import sunxl8.my_weibo.widget.AddView;
 
-public class VisitorMainActivity extends BaseActivity {
+public class VisitorMainActivity extends BaseCommonActivity {
 
     @BindView(R.id.layout_container)
     FrameLayout mLayout;

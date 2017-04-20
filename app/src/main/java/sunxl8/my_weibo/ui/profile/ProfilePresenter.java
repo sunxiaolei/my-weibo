@@ -7,10 +7,8 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-import rx.functions.Action1;
-import sunxl8.my_weibo.entity.UserInfo;
 import sunxl8.my_weibo.net.WeiboRequest;
-import sunxl8.my_weibo.ui.base.BaseActivity;
+import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.BasePresenter;
 
 /**
@@ -19,7 +17,7 @@ import sunxl8.my_weibo.ui.base.BasePresenter;
 
 public class ProfilePresenter extends BasePresenter<ProfileContract.View> implements ProfileContract.Presenter {
 
-    protected ProfilePresenter(BaseActivity activity) {
+    protected ProfilePresenter(BaseCommonActivity activity) {
         super(activity);
     }
 

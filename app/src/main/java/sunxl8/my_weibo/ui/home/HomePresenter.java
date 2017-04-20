@@ -4,9 +4,8 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 
 import java.util.Map;
 
-import rx.functions.Action1;
 import sunxl8.my_weibo.net.WeiboRequest;
-import sunxl8.my_weibo.ui.base.BaseActivity;
+import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.BasePresenter;
 
 /**
@@ -15,7 +14,7 @@ import sunxl8.my_weibo.ui.base.BasePresenter;
 
 public class HomePresenter extends BasePresenter<HomeContract.View> implements HomeContract.Presenter {
 
-    protected HomePresenter(BaseActivity activity) {
+    protected HomePresenter(BaseCommonActivity activity) {
         super(activity);
     }
 

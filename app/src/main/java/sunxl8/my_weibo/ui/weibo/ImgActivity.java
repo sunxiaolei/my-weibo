@@ -30,14 +30,14 @@ import java.util.List;
 import butterknife.BindView;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.PicUrl;
-import sunxl8.my_weibo.ui.base.BaseActivity;
+import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
 
 /**
  * Created by sunxl8 on 2017/4/18.
  */
 
-public class ImgActivity extends BaseActivity {
+public class ImgActivity extends BaseCommonActivity {
 
     @BindView(R.id.vp_img)
     ViewPager mViewPager;

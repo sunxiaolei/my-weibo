@@ -1,6 +1,6 @@
 package sunxl8.my_weibo.ui.discover;
 
-import sunxl8.my_weibo.ui.base.BaseActivity;
+import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.BasePresenter;
 
 /**
@@ -9,7 +9,7 @@ import sunxl8.my_weibo.ui.base.BasePresenter;
 
 public class DiscoverPresenter extends BasePresenter<DiscoverContract.View> implements DiscoverContract.Presenter {
 
-    protected DiscoverPresenter(BaseActivity activity) {
+    protected DiscoverPresenter(BaseCommonActivity activity) {
         super(activity);
     }
 }

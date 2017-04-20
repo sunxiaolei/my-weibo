@@ -1,14 +1,14 @@
 package sunxl8.my_weibo.ui.visitor;
 
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseActivity;
+import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
 
 /**
  * Created by sunxl8 on 2017/4/10.
  */
 
-public class VisitorSettingActivity extends BaseActivity {
+public class VisitorSettingActivity extends BaseCommonActivity {
 
     @Override
     protected IPresenter createPresenter() {
