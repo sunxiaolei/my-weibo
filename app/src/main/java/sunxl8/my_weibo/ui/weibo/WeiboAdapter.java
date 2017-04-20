@@ -22,6 +22,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import rx.functions.Action1;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.HomeTimeline;
+import sunxl8.my_weibo.entity.StatusesBean;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.utils.WeiboTextUtils;
 import sunxl8.my_weibo.utils.WeiboTimeUtils;
@@ -34,13 +35,13 @@ import sunxl8.myutils.StringUtils;
 public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> {
 
     private BaseFragment mFragment;
-    private List<HomeTimeline.StatusesBean> mBeanList;
+    private List<StatusesBean> mBeanList;
 
     public WeiboAdapter(BaseFragment fragment) {
         mFragment = fragment;
     }
 
-    public void setData(List<HomeTimeline.StatusesBean> list) {
+    public void setData(List<StatusesBean> list) {
         if (mBeanList != null) {
             mBeanList.addAll(list);
         } else {
@@ -63,7 +64,7 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final HomeTimeline.StatusesBean bean = mBeanList.get(position);
+        final StatusesBean bean = mBeanList.get(position);
         Glide.with(mFragment).load(bean.getUser().getProfile_image_url()).into(holder.ivIcon);
         holder.tvName.setText(bean.getUser().getName());
         String from = Html.fromHtml(bean.getSource()).toString();
@@ -78,7 +79,7 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         RxView.clicks(holder.layout)
                 .compose(mFragment.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(aVoid -> {
-                    mFragment.getActivity().startActivity(new Intent(mFragment.getActivity(), WeiboActivity.class));
+                    WeiboActivity.startWeiboActivity(mFragment.getActivity(), bean);
                 });
     }
 
