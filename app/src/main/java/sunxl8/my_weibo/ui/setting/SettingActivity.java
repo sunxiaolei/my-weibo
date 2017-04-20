@@ -8,14 +8,14 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 
 import butterknife.BindView;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseActivity;
+import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
 
 /**
  * Created by sunxl8 on 2017/4/10.
  */
 
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends BaseSwipeActivity {
 
     @BindView(R.id.layout_setting_account_manage)
     RelativeLayout layoutAccountManage;

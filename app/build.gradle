@@ -84,4 +84,6 @@ dependencies {
     //bottomsheet
     compile 'com.flipboard:bottomsheet-core:1.5.3'
     compile 'com.flipboard:bottomsheet-commons:1.5.3'
+    //swipeback
+    compile 'com.github.sunxiaolei:swipeback:1.0.0'
 }

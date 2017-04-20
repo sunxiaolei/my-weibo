@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide;
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseActivity;
+import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.utils.DataHolder;
 
@@ -15,7 +15,7 @@ import sunxl8.my_weibo.utils.DataHolder;
  * Created by sunxl8 on 2017/4/10.
  */
 
-public class AccountManagerActivity extends BaseActivity {
+public class AccountManagerActivity extends BaseSwipeActivity {
 
     @BindView(R.id.iv_account_icon)
     CircleImageView ivIcon;
