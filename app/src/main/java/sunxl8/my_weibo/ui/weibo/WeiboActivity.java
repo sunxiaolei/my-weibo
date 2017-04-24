@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.List;
+
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sunxl8.my_weibo.R;
+import sunxl8.my_weibo.entity.PicUrl;
 import sunxl8.my_weibo.entity.StatusesBean;
 import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
 import sunxl8.my_weibo.utils.WeiboTextUtils;
@@ -61,8 +64,21 @@ public class WeiboActivity extends BaseSwipeActivity<WeiboPresenter> implements 
         tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
                 (StringUtils.isEmpty(from) ? "" : getString(R.string.from) + "  " + from));
         tvContent.setText(WeiboTextUtils.getWeiBoContent(bean.getText()));
-        rvImg.setLayoutManager(new GridLayoutManager(this, 3));
-        rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls()));
+        switch (bean.getPic_urls().size()) {
+            case 1:
+                rvImg.setLayoutManager(new GridLayoutManager(this, 1));
+                rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls(), 1));
+                break;
+            case 4:
+                List<PicUrl> list = bean.getPic_urls();
+                list.add(3, new PicUrl());
+                rvImg.setLayoutManager(new GridLayoutManager(this, 3));
+                rvImg.setAdapter(new ImgAdapter(this, list, 3));
+            default:
+                rvImg.setLayoutManager(new GridLayoutManager(this, 3));
+                rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls(), 3));
+                break;
+        }
     }
 
     @Override

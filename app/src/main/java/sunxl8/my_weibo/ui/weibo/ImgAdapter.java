@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.PicUrl;
+import sunxl8.myutils.SizeUtils;
 
 /**
  * Created by sunxl8 on 2017/4/17.
@@ -25,10 +26,12 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
 
     private Context mContext;
     private List<PicUrl> mImgList;
+    private int mType;
 
-    public ImgAdapter(Context context, List<PicUrl> imgList) {
+    public ImgAdapter(Context context, List<PicUrl> imgList, int type) {
         mContext = context;
         mImgList = imgList;
+        mType = type;
     }
 
     @Override
@@ -41,8 +44,23 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         final PicUrl img = mImgList.get(position);
         img.setPic();
-        Glide.with(mContext).load(img.getBmiddle_pic()).centerCrop().into(holder.ivImg);
-        RxView.clicks(holder.ivImg)
+        holder.ivImg1.setVisibility(View.GONE);
+        holder.ivImg3.setVisibility(View.GONE);
+        switch (mType) {
+            case 1:
+                holder.ivImg1.setVisibility(View.VISIBLE);
+                Glide.with(mContext).load(img.getBmiddle_pic()).centerCrop().into(holder.ivImg1);
+                break;
+            case 3:
+                holder.ivImg3.setVisibility(View.VISIBLE);
+                Glide.with(mContext).load(img.getBmiddle_pic()).centerCrop().into(holder.ivImg3);
+                break;
+        }
+        RxView.clicks(holder.ivImg1)
+                .subscribe(aVoid -> {
+                    ImgActivity.startImgActivity(mContext, mImgList, position);
+                });
+        RxView.clicks(holder.ivImg3)
                 .subscribe(aVoid -> {
                     ImgActivity.startImgActivity(mContext, mImgList, position);
                 });
@@ -55,8 +73,10 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.iv_item_img)
-        ImageView ivImg;
+        @BindView(R.id.iv_item_img1)
+        ImageView ivImg1;
+        @BindView(R.id.iv_item_img3)
+        ImageView ivImg3;
 
         public ViewHolder(View itemView) {
             super(itemView);

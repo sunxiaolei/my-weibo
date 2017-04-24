@@ -34,8 +34,10 @@ public class PicUrl implements Serializable {
     }
 
     public void setPic() {
-        this.bmiddle_pic = thumbnail_pic.replace("thumbnail", "bmiddle");
-        this.original_pic = thumbnail_pic.replace("thumbnail", "large");
+        if (thumbnail_pic != null) {
+            this.bmiddle_pic = thumbnail_pic.replace("thumbnail", "bmiddle");
+            this.original_pic = thumbnail_pic.replace("thumbnail", "large");
+        }
     }
 
 }

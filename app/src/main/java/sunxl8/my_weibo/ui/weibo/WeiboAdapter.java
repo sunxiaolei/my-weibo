@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sunxl8.my_weibo.R;
+import sunxl8.my_weibo.entity.PicUrl;
 import sunxl8.my_weibo.entity.StatusesBean;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.utils.WeiboTextUtils;
@@ -70,8 +71,21 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
         holder.tvFrom.setText(WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
                 (StringUtils.isEmpty(from) ? "" : mFragment.getString(R.string.from) + "  " + from));
         holder.tvContent.setText(WeiboTextUtils.getWeiBoContent(bean.getText()));
-        holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 3));
-        holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls()));
+        switch (bean.getPic_urls().size()) {
+            case 1:
+                holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 1));
+                holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls(), 1));
+                break;
+            case 4:
+                List<PicUrl> list = bean.getPic_urls();
+                list.add(3, new PicUrl());
+                holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 3));
+                holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), list, 3));
+            default:
+                holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 3));
+                holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls(), 3));
+                break;
+        }
         holder.tvRetweet.setText(String.valueOf(bean.getReposts_count()));
         holder.tvComment.setText(String.valueOf(bean.getComments_count()));
         holder.tvLike.setText(String.valueOf(bean.getAttitudes_count()));
