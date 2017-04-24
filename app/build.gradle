@@ -77,8 +77,6 @@ dependencies {
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     //xrecyclerview
     compile 'com.jcodecraeer:xrecyclerview:1.3.2'
-    //PhotoView
-    compile 'com.github.chrisbanes:PhotoView:2.0.0'
     //loading
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
     //bottomsheet
@@ -86,4 +84,6 @@ dependencies {
     compile 'com.flipboard:bottomsheet-commons:1.5.3'
     //swipeback
     compile 'com.github.sunxiaolei:swipeback:1.0.0'
+    //长图
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'
 }

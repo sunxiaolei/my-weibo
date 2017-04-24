@@ -2,12 +2,20 @@ package sunxl8.my_weibo.ui.base;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+
+import sunxl8.myutils.StatusBarUtils;
+
 
 /**
  * Created by sunxl8 on 2017/4/20.
@@ -16,6 +24,15 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 public class BaseActivity extends RxAppCompatActivity {
 
     private AlertDialog dialog;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        StatusBarUtils.from(this)
+                .setLightStatusBar(true)
+                .process(this);
+        super.onCreate(savedInstanceState);
+    }
 
     public void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();

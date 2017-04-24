@@ -2,6 +2,8 @@ package sunxl8.my_weibo.ui.weibo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,11 +15,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.ImageViewState;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.flipboard.bottomsheet.BottomSheetLayout;
-import com.github.chrisbanes.photoview.PhotoView;
 import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.jakewharton.rxbinding.support.v4.view.RxViewPager;
 import com.jakewharton.rxbinding.view.RxView;
@@ -126,19 +129,28 @@ public class ImgActivity extends BaseCommonActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = mListViews.get(position);
-            PhotoView photoView = (PhotoView) view.findViewById(R.id.iv_img);
-            photoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            photoView.setMinimumScale(1f);
+            ImageView iv = (ImageView) view.findViewById(R.id.iv_img);
+            SubsamplingScaleImageView siv = (SubsamplingScaleImageView) view.findViewById(R.id.siv_img);
+            siv.setMaxScale(5f);
+            siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_CROP);
             ProgressBar pb = (ProgressBar) view.findViewById(R.id.progress_img);
             DoubleBounce doubleBounce = new DoubleBounce();
             pb.setIndeterminateDrawable(doubleBounce);
             Glide.with(ImgActivity.this).load(mPicUrls.get(position).getOriginal_pic())
-                    .into(new GlideDrawableImageViewTarget(photoView) {
-
+                    .asBitmap()
+                    .into(new SimpleTarget<Bitmap>() {
                         @Override
-                        public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
-                            super.onResourceReady(resource, animation);
+                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                             pb.setVisibility(View.GONE);
+                            if (isLong(resource)) {
+                                iv.setVisibility(View.GONE);
+                                siv.setVisibility(View.VISIBLE);
+                                siv.setImage(ImageSource.bitmap(resource), new ImageViewState(0, new PointF(0, 0), 0));
+                            } else {
+                                iv.setVisibility(View.VISIBLE);
+                                siv.setVisibility(View.GONE);
+                                iv.setImageBitmap(resource);
+                            }
                         }
 
                         @Override
@@ -153,12 +165,23 @@ public class ImgActivity extends BaseCommonActivity {
                             pb.setVisibility(View.GONE);
                         }
                     });
-            RxView.clicks(photoView)
+            RxView.clicks(iv)
+                    .subscribe(aVoid -> {
+                        ImgActivity.this.finish();
+                    });
+            RxView.clicks(siv)
                     .subscribe(aVoid -> {
                         ImgActivity.this.finish();
                     });
             container.addView(view, 0);
             return view;
+        }
+
+        private boolean isLong(Bitmap bitmap) {
+            if (bitmap.getHeight() > bitmap.getWidth() * 3) {
+                return true;
+            }
+            return false;
         }
 
         @Override

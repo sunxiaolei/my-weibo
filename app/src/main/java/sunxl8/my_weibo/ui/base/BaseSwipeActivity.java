@@ -1,21 +1,16 @@
 package sunxl8.my_weibo.ui.base;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,11 +42,6 @@ public abstract class BaseSwipeActivity<T extends IPresenter> extends BaseActivi
     @Override
     @CallSuper
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //TODO
-        StatusBarUtils.from(this)
-                .setLightStatusBar(true)
-                .process(this);
         mPresenter = createPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);
