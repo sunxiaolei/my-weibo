@@ -129,10 +129,8 @@ public class ImgActivity extends BaseCommonActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = mListViews.get(position);
-            ImageView iv = (ImageView) view.findViewById(R.id.iv_img);
             SubsamplingScaleImageView siv = (SubsamplingScaleImageView) view.findViewById(R.id.siv_img);
             siv.setMaxScale(5f);
-            siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_CROP);
             ProgressBar pb = (ProgressBar) view.findViewById(R.id.progress_img);
             DoubleBounce doubleBounce = new DoubleBounce();
             pb.setIndeterminateDrawable(doubleBounce);
@@ -142,14 +140,11 @@ public class ImgActivity extends BaseCommonActivity {
                         @Override
                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                             pb.setVisibility(View.GONE);
+                            siv.setImage(ImageSource.bitmap(resource), new ImageViewState(0, new PointF(0, 0), 0));
                             if (isLong(resource)) {
-                                iv.setVisibility(View.GONE);
-                                siv.setVisibility(View.VISIBLE);
-                                siv.setImage(ImageSource.bitmap(resource), new ImageViewState(0, new PointF(0, 0), 0));
+                                siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_CROP);
                             } else {
-                                iv.setVisibility(View.VISIBLE);
-                                siv.setVisibility(View.GONE);
-                                iv.setImageBitmap(resource);
+                                siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_INSIDE);
                             }
                         }
 
@@ -164,10 +159,6 @@ public class ImgActivity extends BaseCommonActivity {
                             super.onLoadFailed(e, errorDrawable);
                             pb.setVisibility(View.GONE);
                         }
-                    });
-            RxView.clicks(iv)
-                    .subscribe(aVoid -> {
-                        ImgActivity.this.finish();
                     });
             RxView.clicks(siv)
                     .subscribe(aVoid -> {
