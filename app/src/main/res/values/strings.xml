@@ -56,4 +56,6 @@
     <string name="praise">赞</string>
     <string name="cancel">取消</string>
     <string name="weibo_body">微博正文</string>
+    <string name="sure_clean_cache">确定清除缓存么？</string>
+    <string name="clean_cache_already">缓存已清除</string>
 </resources>

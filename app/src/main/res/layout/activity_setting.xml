@@ -264,11 +264,23 @@
             android:textSize="@dimen/setting_item_text_size"/>
 
         <ImageView
+            android:id="@+id/iv_arrow_cache"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:src="@drawable/common_icon_arrow"/>
+
+        <TextView
+            android:id="@+id/tv_setting_cache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/iv_arrow_cache"
+            android:textColor="@color/colorTextItemSecondary"
+            android:textSize="@dimen/setting_item_text_size"/>
+
     </RelativeLayout>
 
     <RelativeLayout
