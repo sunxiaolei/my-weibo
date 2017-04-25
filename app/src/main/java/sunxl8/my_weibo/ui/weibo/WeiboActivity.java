@@ -10,16 +10,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.List;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.entity.PicUrl;
 import sunxl8.my_weibo.entity.StatusesBean;
 import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
 import sunxl8.my_weibo.utils.WeiboTextUtils;
 import sunxl8.my_weibo.utils.WeiboTimeUtils;
+import sunxl8.myutils.ScreenUtils;
 import sunxl8.myutils.StringUtils;
 
 /**
@@ -70,10 +69,10 @@ public class WeiboActivity extends BaseSwipeActivity<WeiboPresenter> implements 
                 rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls(), 1));
                 break;
             case 4:
-                List<PicUrl> list = bean.getPic_urls();
-                list.add(3, new PicUrl());
-                rvImg.setLayoutManager(new GridLayoutManager(this, 3));
-                rvImg.setAdapter(new ImgAdapter(this, list, 3));
+                LinearLayout.LayoutParams imgLayout = (LinearLayout.LayoutParams) rvImg.getLayoutParams();
+                imgLayout.width = ScreenUtils.getScreenWidth() / 3 * 2;
+                rvImg.setLayoutManager(new GridLayoutManager(this, 2));
+                rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls(), 3));
             default:
                 rvImg.setLayoutManager(new GridLayoutManager(this, 3));
                 rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls(), 3));

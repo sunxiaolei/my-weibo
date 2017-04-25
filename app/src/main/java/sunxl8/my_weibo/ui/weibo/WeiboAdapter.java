@@ -19,11 +19,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.entity.PicUrl;
 import sunxl8.my_weibo.entity.StatusesBean;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.utils.WeiboTextUtils;
 import sunxl8.my_weibo.utils.WeiboTimeUtils;
+import sunxl8.myutils.ScreenUtils;
 import sunxl8.myutils.StringUtils;
 
 /**
@@ -77,10 +77,11 @@ public class WeiboAdapter extends RecyclerView.Adapter<WeiboAdapter.ViewHolder> 
                 holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls(), 1));
                 break;
             case 4:
-                List<PicUrl> list = bean.getPic_urls();
-                list.add(3, new PicUrl());
-                holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 3));
-                holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), list, 3));
+                LinearLayout.LayoutParams imgLayout = (LinearLayout.LayoutParams) holder.rvImg.getLayoutParams();
+                imgLayout.width = ScreenUtils.getScreenWidth() / 3 * 2;
+                holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 2));
+                holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls(), 3));
+                break;
             default:
                 holder.rvImg.setLayoutManager(new GridLayoutManager(mFragment.getContext(), 3));
                 holder.rvImg.setAdapter(new ImgAdapter(mFragment.getContext(), bean.getPic_urls(), 3));

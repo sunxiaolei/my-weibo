@@ -16,7 +16,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.PicUrl;
-import sunxl8.myutils.SizeUtils;
 
 /**
  * Created by sunxl8 on 2017/4/17.
