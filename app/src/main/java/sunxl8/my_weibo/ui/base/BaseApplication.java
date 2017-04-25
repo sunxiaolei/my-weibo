@@ -5,8 +5,9 @@ import android.content.Context;
 
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
+import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
+import sunxl8.my_weibo.BuildConfig;
 import sunxl8.myutils.Utils;
 
 /**
@@ -31,6 +32,9 @@ public class BaseApplication extends Application {
                 .hideThreadInfo()
                 .logLevel(LogLevel.FULL)
                 .methodOffset(2);
+        if (BuildConfig.DEBUG) {
+            CustomActivityOnCrash.install(this);
+        }
     }
 
     public static Context getContext() {

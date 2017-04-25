@@ -86,4 +86,6 @@ dependencies {
     compile 'com.github.sunxiaolei:swipeback:1.0.0'
     //长图
     compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'
+    //Crash信息
+    compile 'cat.ereza:customactivityoncrash:1.5.0'
 }

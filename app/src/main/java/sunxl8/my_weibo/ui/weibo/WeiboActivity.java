@@ -73,6 +73,7 @@ public class WeiboActivity extends BaseSwipeActivity<WeiboPresenter> implements 
                 imgLayout.width = ScreenUtils.getScreenWidth() / 3 * 2;
                 rvImg.setLayoutManager(new GridLayoutManager(this, 2));
                 rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls(), 3));
+                break;
             default:
                 rvImg.setLayoutManager(new GridLayoutManager(this, 3));
                 rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls(), 3));
