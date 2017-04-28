@@ -1,6 +1,7 @@
 package sunxl8.my_weibo.ui.home;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -114,7 +115,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     public void error(String msg) {
-
+        xrvHomeTimeline.refreshComplete();
+        mActivity.showToast(msg);
     }
 
     private void showRadarView() {
