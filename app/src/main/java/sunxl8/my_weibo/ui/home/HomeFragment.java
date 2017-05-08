@@ -20,6 +20,7 @@ import sunxl8.my_weibo.ui.weibo.WeiboAdapter;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.widget.GroupPopWindow;
 import sunxl8.my_weibo.widget.RadarPopWindow;
+import sunxl8.my_weibo.widget.WrapContentLinearLayoutManager;
 
 /**
  * Created by sunxl8 on 2017/4/10.
@@ -76,7 +77,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 .subscribe(aVoid -> {
                     showRadarView();
                 });
-        xrvHomeTimeline.setLayoutManager(new LinearLayoutManager(mActivity));
+        xrvHomeTimeline.setLayoutManager(new WrapContentLinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         xrvHomeTimeline.setLoadingMoreEnabled(true);
         xrvHomeTimeline.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
