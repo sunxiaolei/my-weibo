@@ -1,13 +1,16 @@
 package sunxl8.my_weibo.ui.home;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jakewharton.rxbinding.view.RxView;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.android.FragmentEvent;
 
 import java.util.HashMap;
@@ -28,6 +31,8 @@ import sunxl8.my_weibo.widget.WrapContentLinearLayoutManager;
 
 public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View {
 
+    @BindView(R.id.refresh_fragment_home)
+    SwipeRefreshLayout layoutRefresh;
     @BindView(R.id.layout_navigation)
     RelativeLayout layoutNavigation;
     @BindView(R.id.iv_navigation_friendattention)
@@ -36,8 +41,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     ImageView ivNavigationRadar;
     @BindView(R.id.tv_navigation_name)
     TextView tvNavigationName;
-    @BindView(R.id.xrv_fragment_home)
-    XRecyclerView xrvHomeTimeline;
+    @BindView(R.id.rv_fragment_home)
+    RecyclerView xrvHomeTimeline;
 
     private WeiboAdapter mAdapter;
     private RadarPopWindow radarPopWindow;
@@ -78,27 +83,29 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                     showRadarView();
                 });
         xrvHomeTimeline.setLayoutManager(new WrapContentLinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
-        xrvHomeTimeline.setLoadingMoreEnabled(true);
-        xrvHomeTimeline.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-                getHomeTimeLine(true);
-            }
-
-            @Override
-            public void onLoadMore() {
-                page++;
-                getHomeTimeLine(false);
-            }
-        });
-        mAdapter = new WeiboAdapter(this);
+        mAdapter = new WeiboAdapter(mActivity);
         xrvHomeTimeline.setAdapter(mAdapter);
+
+        layoutRefresh.setOnRefreshListener(() -> getHomeTimeLine(true));
+        mAdapter.setOnLoadMoreListener(() -> {
+            page++;
+            getHomeTimeLine(false);
+        }, xrvHomeTimeline);
+
+        View emptyView = LayoutInflater.from(mActivity).inflate(R.layout.view_empty, (ViewGroup) xrvHomeTimeline.getParent(), false);
+        mAdapter.setEmptyView(emptyView);
+        RxView.clicks(emptyView)
+                .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    getHomeTimeLine(true);
+                });
+
     }
 
     public void getHomeTimeLine(boolean refresh) {
         if (refresh) {
+            layoutRefresh.setRefreshing(true);
             page = 1;
-            if (mAdapter != null) mAdapter.clean();
         }
         Map<String, String> params = new HashMap<>();
         /**
@@ -116,8 +123,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     public void error(String msg) {
-        xrvHomeTimeline.refreshComplete();
-        mActivity.showToast(msg);
+        layoutRefresh.setRefreshing(false);
+        mAdapter.loadMoreComplete();
     }
 
     private void showRadarView() {
@@ -136,7 +143,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     public void setHomeTimeline(HomeTimeline homeTimeline) {
-        xrvHomeTimeline.refreshComplete();
-        mAdapter.setData(homeTimeline.getStatuses());
+        layoutRefresh.setRefreshing(false);
+        mAdapter.loadMoreComplete();
+        mAdapter.addData(homeTimeline.getStatuses());
+
     }
 }
