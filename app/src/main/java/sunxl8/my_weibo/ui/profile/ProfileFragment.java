@@ -1,6 +1,7 @@
 package sunxl8.my_weibo.ui.profile;
 
 import android.content.Intent;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -9,6 +10,7 @@ import com.trello.rxlifecycle.android.FragmentEvent;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
+import rx.functions.Action1;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.UserInfo;
 import sunxl8.my_weibo.ui.base.BaseFragment;
@@ -39,6 +41,9 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements P
     @BindView(R.id.tv_profile_fans)
     TextView tvFans;
 
+    @BindView(R.id.layout_profile_attention)
+    LinearLayout layoutAttention;
+
     @Override
     protected ProfilePresenter createPresenter() {
         return new ProfilePresenter(mActivity);
@@ -60,6 +65,11 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements P
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(aVoid -> {
                     startActivity(new Intent(mActivity, SettingActivity.class));
+                });
+        RxView.clicks(layoutAttention)
+                .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    startActivity(new Intent(mActivity, FriendsActivity.class));
                 });
     }
 

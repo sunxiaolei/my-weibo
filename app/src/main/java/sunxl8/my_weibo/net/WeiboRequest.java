@@ -4,6 +4,7 @@ import java.util.Map;
 
 import rx.Observable;
 import sunxl8.my_weibo.Constant;
+import sunxl8.my_weibo.entity.Friends;
 import sunxl8.my_weibo.entity.HomeTimeline;
 import sunxl8.my_weibo.entity.UserInfo;
 
@@ -24,6 +25,13 @@ public class WeiboRequest {
         return NetworkManager.getCommonClient(Constant.API_SERVER)
                 .create(WeiboApi.class)
                 .getHomeTimeline(params)
+                .compose(SchedulersCompat.applyIoSchedulers());
+    }
+
+    public static Observable<Friends> getFriends(Map<String, String> params){
+        return NetworkManager.getCommonClient(Constant.API_SERVER)
+                .create(WeiboApi.class)
+                .getFriends(params)
                 .compose(SchedulersCompat.applyIoSchedulers());
     }
 }

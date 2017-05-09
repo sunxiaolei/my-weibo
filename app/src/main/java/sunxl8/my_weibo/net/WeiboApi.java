@@ -5,6 +5,7 @@ import java.util.Map;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 import rx.Observable;
+import sunxl8.my_weibo.entity.Friends;
 import sunxl8.my_weibo.entity.HomeTimeline;
 import sunxl8.my_weibo.entity.UserInfo;
 
@@ -14,9 +15,28 @@ import sunxl8.my_weibo.entity.UserInfo;
 
 public interface WeiboApi {
 
+    /**
+     * 获取用户信息
+     * @param params
+     * @return
+     */
     @GET("users/show.json")
     Observable<UserInfo> show(@QueryMap Map<String, String> params);
 
+    /**
+     * 获取当前登录用户及其所关注用户的最新微博
+     * @param params
+     * @return
+     */
     @GET("statuses/home_timeline.json")
     Observable<HomeTimeline> getHomeTimeline(@QueryMap Map<String, String> params);
+
+
+    /**
+     * 获取用户的关注列表
+     * @param params
+     * @return
+     */
+    @GET("friendships/friends.json")
+    Observable<Friends> getFriends(@QueryMap Map<String, String> params);
 }
