@@ -13,6 +13,7 @@ public class Constant {
             + "follow_app_official_microblog," + "invitation_write";
 
     public static final String API_SERVER = "https://api.weibo.com/2/";
+    public static final String API_SERVER_OAUTH = "https://api.weibo.com/oauth2/";
 
     public static final String KEY_ACCESS_TOKEN = "access_token";
 

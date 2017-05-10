@@ -28,7 +28,7 @@
         <activity android:name=".ui.setting.AccountManagerActivity"/>
         <activity android:name=".ui.weibo.ImgActivity"/>
         <activity android:name=".ui.weibo.WeiboActivity"/>
-        <activity android:name=".ui.profile.FriendsActivity"/>
+        <activity android:name=".ui.profile.friends.FriendsActivity"/>
     </application>
 
 </manifest>

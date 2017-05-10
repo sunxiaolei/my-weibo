@@ -11,7 +11,10 @@ import com.sina.weibo.sdk.auth.sso.AccessTokenKeeper;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
+import rx.functions.Action1;
 import sunxl8.my_weibo.R;
+import sunxl8.my_weibo.entity.TokenInfo;
+import sunxl8.my_weibo.net.WeiboRequest;
 import sunxl8.my_weibo.ui.base.BaseApplication;
 import sunxl8.my_weibo.ui.main.MainActivity;
 import sunxl8.my_weibo.ui.visitor.VisitorMainActivity;
@@ -45,4 +48,5 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(mStartIntent);
                 });
     }
+
 }

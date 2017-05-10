@@ -10,10 +10,10 @@ import com.trello.rxlifecycle.android.FragmentEvent;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
-import rx.functions.Action1;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.UserInfo;
 import sunxl8.my_weibo.ui.base.BaseFragment;
+import sunxl8.my_weibo.ui.profile.friends.FriendsActivity;
 import sunxl8.my_weibo.ui.setting.SettingActivity;
 import sunxl8.my_weibo.utils.DataHolder;
 import sunxl8.myutils.StringUtils;
