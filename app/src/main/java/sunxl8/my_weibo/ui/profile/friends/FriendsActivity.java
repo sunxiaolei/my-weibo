@@ -1,9 +1,16 @@
 package sunxl8.my_weibo.ui.profile.friends;
 
+import android.app.Activity;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.ActivityEvent;
+import com.trello.rxlifecycle.android.FragmentEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +30,14 @@ import sunxl8.my_weibo.utils.DataHolder;
 
 public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> implements FriendsContact.View {
 
+    @BindView(R.id.refresh_friends)
+    SwipeRefreshLayout layoutRefresh;
     @BindView(R.id.rv_friends)
     RecyclerView rvFriends;
 
     private FriendsAdapter mAdapter;
+
+    private int page = 1;
 
     @Override
     protected FriendsPresenter createPresenter() {
@@ -40,6 +51,16 @@ public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> impleme
 
     @Override
     protected void initData() {
+        layoutRefresh.setRefreshing(true);
+        getFriends(true);
+
+    }
+
+    private void getFriends(boolean refresh) {
+        if (refresh) {
+            layoutRefresh.setRefreshing(true);
+            page = 1;
+        }
         /**
          uid	false	int64	需要查询的用户UID。
          screen_name	false	string	需要查询的用户昵称。
@@ -50,8 +71,7 @@ public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> impleme
         Map<String, String> params = new HashMap<>();
         params.put("uid", String.valueOf(DataHolder.getInstanse().getUserId()));
         params.put("count", "20");
-        params.put("cursor", "0");
-        params.put("trim_status", "0");
+        params.put("cursor", String.valueOf(page));
         mPresenter.getFriends(params);
     }
 
@@ -60,15 +80,30 @@ public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> impleme
         rvFriends.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new FriendsAdapter(this);
         rvFriends.setAdapter(mAdapter);
+
+        layoutRefresh.setOnRefreshListener(() -> getFriends(true));
+        mAdapter.setOnLoadMoreListener(() -> {
+            page++;
+            getFriends(false);
+        }, rvFriends);
+
+        View emptyView = LayoutInflater.from(this).inflate(R.layout.view_empty, (ViewGroup) rvFriends.getParent(), false);
+        mAdapter.setEmptyView(emptyView);
+        RxView.clicks(emptyView)
+                .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    getFriends(true);
+                });
     }
 
     @Override
     public void error(String msg) {
-
+        layoutRefresh.setRefreshing(false);
     }
 
     @Override
     public void setFriends(Friends friends) {
+        layoutRefresh.setRefreshing(false);
         mAdapter.addData(friends.getUsers());
     }
 }
