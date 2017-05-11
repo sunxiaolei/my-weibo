@@ -21,9 +21,11 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 import butterknife.BindView;
 import sunxl8.my_weibo.Constant;
 import sunxl8.my_weibo.R;
+import sunxl8.my_weibo.ui.base.BaseApplication;
 import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.ui.main.MainActivity;
+import sunxl8.my_weibo.utils.DataHolder;
 import sunxl8.my_weibo.widget.AddView;
 
 public class VisitorMainActivity extends BaseCommonActivity {
@@ -197,6 +199,7 @@ public class VisitorMainActivity extends BaseCommonActivity {
                 if (mAccessToken.isSessionValid()) {
                     // 保存 Token 到 SharedPreferences
                     AccessTokenKeeper.writeAccessToken(VisitorMainActivity.this, mAccessToken);
+                    BaseApplication.token = mAccessToken.getToken();
                     showToast(getString(R.string.login_success));
                     finish();
                     startActivity(new Intent(VisitorMainActivity.this, MainActivity.class));

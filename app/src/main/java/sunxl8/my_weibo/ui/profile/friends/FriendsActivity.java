@@ -70,13 +70,14 @@ public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> impleme
          */
         Map<String, String> params = new HashMap<>();
         params.put("uid", String.valueOf(DataHolder.getInstanse().getUserId()));
-        params.put("count", "20");
+        params.put("count", "5");
         params.put("cursor", String.valueOf(page));
         mPresenter.getFriends(params);
     }
 
     @Override
     protected void initView() {
+        mTitle.setText(getString(R.string.my_friends));
         rvFriends.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new FriendsAdapter(this);
         rvFriends.setAdapter(mAdapter);
@@ -99,11 +100,13 @@ public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> impleme
     @Override
     public void error(String msg) {
         layoutRefresh.setRefreshing(false);
+        mAdapter.loadMoreComplete();
     }
 
     @Override
     public void setFriends(Friends friends) {
         layoutRefresh.setRefreshing(false);
+        mAdapter.loadMoreComplete();
         mAdapter.addData(friends.getUsers());
     }
 }

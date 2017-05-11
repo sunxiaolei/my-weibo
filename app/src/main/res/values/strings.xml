@@ -59,4 +59,5 @@
     <string name="sure_clean_cache">确定清除缓存么？</string>
     <string name="clean_cache_already">缓存已清除</string>
     <string name="data_null_click_refresh">暂无数据，点击重试</string>
+    <string name="my_friends">我的好友</string>
 </resources>

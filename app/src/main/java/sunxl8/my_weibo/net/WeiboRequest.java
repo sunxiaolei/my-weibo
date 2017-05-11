@@ -6,6 +6,7 @@ import rx.Observable;
 import sunxl8.my_weibo.Constant;
 import sunxl8.my_weibo.entity.Friends;
 import sunxl8.my_weibo.entity.HomeTimeline;
+import sunxl8.my_weibo.entity.Token;
 import sunxl8.my_weibo.entity.TokenInfo;
 import sunxl8.my_weibo.entity.UserInfo;
 
@@ -14,6 +15,13 @@ import sunxl8.my_weibo.entity.UserInfo;
  */
 
 public class WeiboRequest {
+
+    public static Observable<Token> getToken(Map<String, String> params) {
+        return NetworkManager.getCommonClient(Constant.API_SERVER_OAUTH, false)
+                .create(WeiboApi.class)
+                .getToken(params)
+                .compose(SchedulersCompat.applyIoSchedulers());
+    }
 
     public static Observable<TokenInfo> getTokenInfo() {
         return NetworkManager.getCommonClient(Constant.API_SERVER_OAUTH)

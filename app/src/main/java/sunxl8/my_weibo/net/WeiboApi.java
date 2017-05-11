@@ -8,6 +8,7 @@ import retrofit2.http.QueryMap;
 import rx.Observable;
 import sunxl8.my_weibo.entity.Friends;
 import sunxl8.my_weibo.entity.HomeTimeline;
+import sunxl8.my_weibo.entity.Token;
 import sunxl8.my_weibo.entity.TokenInfo;
 import sunxl8.my_weibo.entity.UserInfo;
 
@@ -17,6 +18,13 @@ import sunxl8.my_weibo.entity.UserInfo;
 
 public interface WeiboApi {
 
+    /**
+     * 获取token
+     *
+     * @return
+     */
+    @POST("access_token")
+    Observable<Token> getToken(@QueryMap Map<String, String> params);
 
     /**
      * 获取token信息

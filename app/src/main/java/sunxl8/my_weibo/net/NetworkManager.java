@@ -42,18 +42,27 @@ public class NetworkManager {
     private static Retrofit commonClient;
     private static Retrofit.Builder commonBuilder;
 
+    private static String lastUrl;
+    private static boolean lastAddToken = true;
+
     public static Retrofit getCommonClient(String baseUrl) {
-        return getCommonClient(baseUrl, null);
+        return getCommonClient(baseUrl, null, true);
     }
 
-    public static Retrofit getCommonClient(String baseUrl, Map<String, String> headers) {
-        if (commonClient == null) {
+    public static Retrofit getCommonClient(String baseUrl, boolean addToken) {
+        return getCommonClient(baseUrl, null, addToken);
+    }
+
+    public static Retrofit getCommonClient(String baseUrl, Map<String, String> headers, boolean addToken) {
+        if (commonClient == null || !baseUrl.equals(lastUrl) || lastAddToken != addToken) {
             commonClient = new Retrofit.Builder()
                     .baseUrl(baseUrl)
-                    .client(getHttpClient(headers))
+                    .client(getHttpClient(headers, addToken))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
+            lastUrl = baseUrl;
+            lastAddToken = addToken;
         }
         return commonClient;
     }
@@ -62,7 +71,7 @@ public class NetworkManager {
     private static File httpCacheDirectory = new File(BaseApplication.getContext().getCacheDir(), "MyWeibo");
     private static Cache cache = new Cache(httpCacheDirectory, 100 * 1024 * 1024);
 
-    private static OkHttpClient getHttpClient(final Map<String, String> headers) {
+    private static OkHttpClient getHttpClient(final Map<String, String> headers, boolean addToken) {
 
         Interceptor cacheInterceptor = new Interceptor() {
             @Override
@@ -149,10 +158,17 @@ public class NetworkManager {
                 .writeTimeout(HTTP_WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
                 .readTimeout(HTTP_READ_TIMEOUT, TimeUnit.MILLISECONDS);
 
-        builder.addInterceptor(interceptor)
-                .addInterceptor(addTokenInterceptor)
-                .addNetworkInterceptor(cacheInterceptor)
-                .cache(cache);
+        if (addToken) {
+            builder.addInterceptor(interceptor)
+                    .addInterceptor(addTokenInterceptor)
+                    .addNetworkInterceptor(cacheInterceptor)
+                    .cache(cache);
+        } else {
+            builder.addInterceptor(interceptor)
+                    .addNetworkInterceptor(cacheInterceptor)
+                    .cache(cache);
+        }
+
 
         return builder.build();
     }
