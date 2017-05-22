@@ -44,7 +44,7 @@ public class WeiboAdapter extends BaseQuickAdapter<StatusesBean, BaseViewHolder>
                         ? mContext.getResources().getColor(R.color.colorTextVip) : mContext.getResources().getColor(R.color.colorTextItemPrimary))
                 .setText(R.id.tv_item_from, WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
                         (StringUtils.isEmpty(from) ? "" : mContext.getString(R.string.from) + "  " + from))
-                .setText(R.id.tv_item_content, WeiboTextUtils.getWeiBoContent(bean.getText()).toString())
+                .setText(R.id.tv_item_content, WeiboTextUtils.getWeiBoContent(bean.getText()))
                 .setText(R.id.tv_item_retweet, String.valueOf(bean.getReposts_count()))
                 .setText(R.id.tv_item_comment, String.valueOf(bean.getComments_count()))
                 .setText(R.id.tv_item_like, String.valueOf(bean.getAttitudes_count()));
