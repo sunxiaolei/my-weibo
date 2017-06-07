@@ -108,5 +108,6 @@ public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> impleme
         layoutRefresh.setRefreshing(false);
         mAdapter.loadMoreComplete();
         mAdapter.addData(friends.getUsers());
+        mAdapter.disableLoadMoreIfNotFullPage(rvFriends);
     }
 }
