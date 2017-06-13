@@ -12,9 +12,6 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.entity.StatusesBean;
 import sunxl8.my_weibo.utils.WeiboTextUtils;
@@ -64,6 +61,31 @@ public class WeiboAdapter extends BaseQuickAdapter<StatusesBean, BaseViewHolder>
                 rv.setLayoutManager(new GridLayoutManager(mContext, 3));
                 rv.setAdapter(new ImgAdapter(mContext, bean.getPic_urls(), 3));
                 break;
+        }
+
+        if (bean.getRetweeted_status() != null) {
+            holder.getView(R.id.layout_item_source).setVisibility(View.VISIBLE);
+            holder.setText(R.id.tv_item_source_content, WeiboTextUtils.getWeiBoContent(
+                    "@" + bean.getRetweeted_status().getUser().getName() + ":" + bean.getRetweeted_status().getText()));
+            RecyclerView rvSource = holder.getView(R.id.rv_item_source_img);
+            switch (bean.getRetweeted_status().getPic_urls().size()) {
+                case 1:
+                    rvSource.setLayoutManager(new GridLayoutManager(mContext, 1));
+                    rvSource.setAdapter(new ImgAdapter(mContext, bean.getRetweeted_status().getPic_urls(), 1));
+                    break;
+                case 4:
+                    LinearLayout.LayoutParams imgLayout = (LinearLayout.LayoutParams) rvSource.getLayoutParams();
+                    imgLayout.width = ScreenUtils.getScreenWidth() / 3 * 2;
+                    rvSource.setLayoutManager(new GridLayoutManager(mContext, 2));
+                    rvSource.setAdapter(new ImgAdapter(mContext, bean.getRetweeted_status().getPic_urls(), 3));
+                    break;
+                default:
+                    rvSource.setLayoutManager(new GridLayoutManager(mContext, 3));
+                    rvSource.setAdapter(new ImgAdapter(mContext, bean.getRetweeted_status().getPic_urls(), 3));
+                    break;
+            }
+        } else {
+            holder.getView(R.id.layout_item_source).setVisibility(View.GONE);
         }
 
     }
