@@ -1,6 +1,6 @@
 package sunxl8.my_weibo.ui.profile;
 
-import sunxl8.my_weibo.entity.UserInfo;
+import sun.xiaolei.m_wblib.entity.UserInfo;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.ui.base.IView;
 

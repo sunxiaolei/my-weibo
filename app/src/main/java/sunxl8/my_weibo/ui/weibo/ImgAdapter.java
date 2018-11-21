@@ -8,14 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.jakewharton.rxbinding.view.RxView;
+import com.bumptech.glide.request.RequestOptions;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import sun.xiaolei.m_wblib.entity.PicUrl;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.entity.PicUrl;
 
 /**
  * Created by sunxl8 on 2017/4/17.
@@ -45,14 +46,15 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
         img.setPic();
         holder.ivImg1.setVisibility(View.GONE);
         holder.ivImg3.setVisibility(View.GONE);
+        RequestOptions options = new RequestOptions().centerCrop();
         switch (mType) {
             case 1:
                 holder.ivImg1.setVisibility(View.VISIBLE);
-                Glide.with(mContext).load(img.getBmiddle_pic()).centerCrop().into(holder.ivImg1);
+                Glide.with(mContext).load(img.getBmiddle_pic()).apply(options).into(holder.ivImg1);
                 break;
             case 3:
                 holder.ivImg3.setVisibility(View.VISIBLE);
-                Glide.with(mContext).load(img.getBmiddle_pic()).centerCrop().into(holder.ivImg3);
+                Glide.with(mContext).load(img.getBmiddle_pic()).apply(options).into(holder.ivImg3);
                 break;
         }
         RxView.clicks(holder.ivImg1)

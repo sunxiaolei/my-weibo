@@ -1,31 +1,22 @@
 package sunxl8.my_weibo.ui.visitor;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.jakewharton.rxbinding.view.RxView;
-import com.orhanobut.logger.Logger;
-import com.sina.weibo.sdk.auth.AuthInfo;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-import com.sina.weibo.sdk.auth.WeiboAuthListener;
-import com.sina.weibo.sdk.auth.sso.AccessTokenKeeper;
-import com.sina.weibo.sdk.auth.sso.SsoHandler;
-import com.sina.weibo.sdk.exception.WeiboException;
-import com.trello.rxlifecycle.android.ActivityEvent;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import butterknife.BindView;
-import sunxl8.my_weibo.Constant;
+import sun.xiaolei.m_wblib.AuthorizeListener;
+import sun.xiaolei.m_wblib.WbManager;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseApplication;
 import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.ui.main.MainActivity;
-import sunxl8.my_weibo.utils.DataHolder;
 import sunxl8.my_weibo.widget.AddView;
 
 public class VisitorMainActivity extends BaseCommonActivity {
@@ -60,10 +51,6 @@ public class VisitorMainActivity extends BaseCommonActivity {
     private VisitorDiscoverFragment mDiscoverFragment;
     private VisitorProfileFragment mProfileFragment;
 
-    private AuthInfo mAuthInfo;
-    private SsoHandler mSsoHandler;
-    private Oauth2AccessToken mAccessToken;
-
     @Override
     protected IPresenter createPresenter() {
         return null;
@@ -76,8 +63,7 @@ public class VisitorMainActivity extends BaseCommonActivity {
 
     @Override
     protected void initData() {
-        mAuthInfo = new AuthInfo(this, Constant.APP_KEY, Constant.REDIRECT_URL, Constant.SCOPE);
-        mSsoHandler = new SsoHandler(this, mAuthInfo);
+
         fm = getSupportFragmentManager();
     }
 
@@ -186,36 +172,26 @@ public class VisitorMainActivity extends BaseCommonActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (mSsoHandler != null) {
-            mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
-        }
+        WbManager.authorizeCallBack(requestCode, resultCode, data);
     }
 
     public void login() {
-        mSsoHandler.authorize(new WeiboAuthListener() {
+        WbManager.authorize(this, new AuthorizeListener() {
             @Override
-            public void onComplete(Bundle bundle) {
-                mAccessToken = Oauth2AccessToken.parseAccessToken(bundle);
-                if (mAccessToken.isSessionValid()) {
-                    // 保存 Token 到 SharedPreferences
-                    AccessTokenKeeper.writeAccessToken(VisitorMainActivity.this, mAccessToken);
-                    BaseApplication.token = mAccessToken.getToken();
-                    showToast(getString(R.string.login_success));
-                    finish();
-                    startActivity(new Intent(VisitorMainActivity.this, MainActivity.class));
-                } else {
-                    // 会收到 Code：
-                    // 1. 当您未在平台上注册的应用程序的包名与签名时；
-                    // 2. 当您注册的应用程序包名与签名不正确时；
-                    // 3. 当您在平台上注册的包名和签名与您当前测试的应用的包名和签名不匹配时。
-                    String code = bundle.getString("code");
-                    showToast(getString(R.string.login_fail) + "-code:" + code);
-                }
+            public void onSuccess() {
+                showToast(getString(R.string.login_success));
+                finish();
+                startActivity(new Intent(VisitorMainActivity.this, MainActivity.class));
             }
 
             @Override
-            public void onWeiboException(WeiboException e) {
-                Logger.e(e, "onWeiboException()");
+            public void onFail(String code) {
+                showToast(getString(R.string.login_fail) + "-code:" + code);
+            }
+
+            @Override
+            public void onException(Exception e) {
+
             }
 
             @Override

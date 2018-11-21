@@ -6,10 +6,10 @@ import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
+import sun.xiaolei.m_base.utils.DataHolder;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
-import sunxl8.my_weibo.utils.DataHolder;
 
 /**
  * Created by sunxl8 on 2017/4/10.

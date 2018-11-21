@@ -1,0 +1,109 @@
+ext {
+
+    minSdkVersion = 19
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.3'
+
+    dependVersion = [
+            "support"    : "28.0.0",
+            "constraint" : "1.1.2",
+            "retrofit"   : "2.4.0",
+            "rxbinding"  : "2.1.1",
+            "rxlifecycle": "2.2.1",
+            "glide"      : "4.6.1",
+            "butterknife": "8.2.1",
+    ]
+
+    dependencies = [
+            //support
+            "support-v4"               : "com.android.support:support-v4:${dependVersion.support}",
+            "appcompat-v7"             : "com.android.support:appcompat-v7:${dependVersion.support}",
+            "cardview-v7"              : "com.android.support:cardview-v7:${dependVersion.support}",
+            "recyclerview-v7"          : "com.android.support:recyclerview-v7:${dependVersion.support}",
+            "design"                   : "com.android.support:design:${dependVersion.support}",
+            "constraint"               : "com.android.support.constraint:constraint-layout:${dependVersion.constraint}",
+            //网络
+            "retrofit"                 : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",
+            "converter-gson"           : "com.squareup.retrofit2:converter-gson:${dependVersion.retrofit}",
+            "adapter-rxjava2"          : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}",
+            //json解析
+            "gson"                     : "com.google.code.gson:gson:2.8.2",
+            //rx
+            "rxjava"                   : "io.reactivex.rxjava2:rxjava:2.1.10",
+            "rxandroid"                : "io.reactivex.rxjava2:rxandroid:2.0.2",
+            "rxbinding"                : "com.jakewharton.rxbinding2:rxbinding:${dependVersion.rxbinding}",
+            "rxbinding-support-v4"     : "com.jakewharton.rxbinding2:rxbinding-support-v4:${dependVersion.rxbinding}",
+            "rxbinding-appcompat-v7"   : "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:${dependVersion.rxbinding}",
+            "rxbinding-design"         : "com.jakewharton.rxbinding2:rxbinding-design:${dependVersion.rxbinding}",
+            "rxbinding-recyclerview-v7": "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:${dependVersion.rxbinding}",
+            "rxlifecycle"              : "com.trello.rxlifecycle2:rxlifecycle:${dependVersion.rxlifecycle}",
+            "rxlifecycle-android"      : "com.trello.rxlifecycle2:rxlifecycle-android:${dependVersion.rxlifecycle}",
+            "rxlifecycle-components"   : "com.trello.rxlifecycle2:rxlifecycle-components:${dependVersion.rxlifecycle}",
+            //图片加载
+            "glide"                    : "com.github.bumptech.glide:glide:${dependVersion.glide}",
+            "glide-okhttp3-integration": "com.github.bumptech.glide:okhttp3-integration:${dependVersion.glide}",
+            "glide-compiler"           : "com.github.bumptech.glide:compiler:${dependVersion.glide}",
+            //动态权限
+            "rxpermissions"            : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar",
+            //依赖注入
+            "butterknife"              : "com.jakewharton:butterknife:${dependVersion.butterknife}",
+            "butterknife-compiler"     : "com.jakewharton:butterknife-compiler:${dependVersion.butterknife}",
+            //数据库
+            "litepal"                  : "org.litepal.android:core:1.5.1",
+            //dex分包
+            "multidex"                 : "com.android.support:multidex:1.0.2",
+            //下载
+            "filedownloader"           : "com.liulishuo.filedownloader:library:1.7.4",
+            //图片压缩
+            "Luban"                    : "top.zibin:Luban:1.1.8",
+            "compressor"               : "id.zelory:compressor:2.1.0",
+            //图片显示
+            "PhotoView"                : "com.github.chrisbanes:PhotoView:1.3.0",
+            //图片选择
+            "matisse"                  : "com.zhihu.android:matisse:0.5.1",
+            //工具库guava
+            "guava"                    : "com.google.guava:guava:24.1-android",
+            //日志
+            "logger"                   : "com.orhanobut:logger:2.1.1",
+            //分析工具
+            "leakcanary-android"       : "com.squareup.leakcanary:leakcanary-android:1.4-beta2",
+            "leakcanary-android-no-op" : "com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2",
+            "blockcanary-android"      : "com.github.markzhai:blockcanary-android:1.5.0",
+            //扫码
+            "zxing"                    : "com.google.zxing:core:3.0.0",
+            //路由
+            "arouter"                  : "com.alibaba:arouter-api:1.4.0",
+            "arouter-compiler"         : "com.alibaba:arouter-compiler:1.2.1",
+            //key-value存储
+            "mmkv"                     : "com.tencent:mmkv:1.0.10",
+            //============================UI=================================
+            //adapter
+            "baseRecyclerView"         : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40",
+            "baseadapter"              : "com.zhy:base-adapter:3.0.3",
+            "smartrefresh"             : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14",
+            "smartrefreshheader"       : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14",
+            //floatingActionButton
+            "floatbtn"                 : "com.github.clans:fab:1.6.4",
+            //粘性头部
+            "stikcyheaders"            : "com.timehop.stickyheadersrecyclerview:library:0.4.3@aar",
+            //ToggleButton
+            "togglebutton"             : "com.zcw:togglebutton-library:1.0.0",
+            //circularprogressview
+            "circularprogressview"     : "com.github.rahatarmanahmed:circularprogressview:2.5.0",
+            //侧滑
+            "swipelayout"              : "com.daimajia.swipelayout:library:1.2.0@aar",
+            //渐变闪动字体
+            "shimmer"                  : "com.facebook.shimmer:shimmer:0.1.0@aar",
+            //拖动
+            "slidinguppanel"           : "com.sothree.slidinguppanel:library:3.3.1",
+            //仿toast
+            "crouton"                  : "de.keyboardsurfer.android.widget:crouton:1.8.5@aar",
+            //蒙板
+            "NewbieGuide"              : "com.github.huburt-Hu:NewbieGuide:v2.0.0",
+            //返回退出
+            "swipebacklayout"          : "me.imid.swipebacklayout.lib:library:1.1.0",
+            "LoadingDialog"            : "com.github.ForgetAll:LoadingDialog:v1.0.4",
+    ]
+}
+

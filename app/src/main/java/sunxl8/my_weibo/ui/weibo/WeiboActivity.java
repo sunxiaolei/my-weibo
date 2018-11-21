@@ -13,11 +13,11 @@ import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
+import sun.xiaolei.m_base.utils.WeiboTextUtils;
+import sun.xiaolei.m_base.utils.WeiboTimeUtils;
+import sun.xiaolei.m_wblib.entity.StatusesBean;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.entity.StatusesBean;
 import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
-import sunxl8.my_weibo.utils.WeiboTextUtils;
-import sunxl8.my_weibo.utils.WeiboTimeUtils;
 import sunxl8.myutils.ScreenUtils;
 import sunxl8.myutils.StringUtils;
 

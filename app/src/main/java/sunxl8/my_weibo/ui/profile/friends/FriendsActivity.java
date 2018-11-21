@@ -8,20 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jakewharton.rxbinding.view.RxView;
-import com.trello.rxlifecycle.android.ActivityEvent;
-import com.trello.rxlifecycle.android.FragmentEvent;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
+import sun.xiaolei.m_base.utils.DataHolder;
+import sun.xiaolei.m_wblib.entity.Friends;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.entity.Friends;
-import sunxl8.my_weibo.net.WeiboRequest;
 import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
 import sunxl8.my_weibo.ui.profile.FriendsAdapter;
-import sunxl8.my_weibo.utils.DataHolder;
 
 /**
  * Created by hahaha on 2017/5/9.

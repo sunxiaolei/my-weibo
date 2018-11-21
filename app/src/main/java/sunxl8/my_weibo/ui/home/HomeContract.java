@@ -2,7 +2,7 @@ package sunxl8.my_weibo.ui.home;
 
 import java.util.Map;
 
-import sunxl8.my_weibo.entity.HomeTimeline;
+import sun.xiaolei.m_wblib.entity.HomeTimeline;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.ui.base.IView;
 

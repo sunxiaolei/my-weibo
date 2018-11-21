@@ -5,11 +5,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jakewharton.rxbinding.view.RxView;
-import com.trello.rxlifecycle.android.FragmentEvent;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import butterknife.BindView;
-import rx.functions.Action1;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.ui.base.IPresenter;

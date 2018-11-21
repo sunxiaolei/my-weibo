@@ -1,10 +1,10 @@
 package sunxl8.my_weibo.ui.home;
 
-import com.trello.rxlifecycle.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.Map;
 
-import sunxl8.my_weibo.net.WeiboRequest;
+import sun.xiaolei.m_wblib.net.WeiboRequest;
 import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.BasePresenter;
 

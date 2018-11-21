@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -15,24 +17,24 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.ImageViewState;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.flipboard.bottomsheet.BottomSheetLayout;
 import com.github.ybq.android.spinkit.style.DoubleBounce;
-import com.jakewharton.rxbinding.support.v4.view.RxViewPager;
-import com.jakewharton.rxbinding.view.RxView;
-import com.trello.rxlifecycle.android.ActivityEvent;
+import com.jakewharton.rxbinding2.support.v4.view.RxViewPager;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import sun.xiaolei.m_wblib.entity.PicUrl;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.entity.PicUrl;
 import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.IPresenter;
 
@@ -134,11 +136,16 @@ public class ImgActivity extends BaseCommonActivity {
             ProgressBar pb = (ProgressBar) view.findViewById(R.id.progress_img);
             DoubleBounce doubleBounce = new DoubleBounce();
             pb.setIndeterminateDrawable(doubleBounce);
-            Glide.with(ImgActivity.this).load(mPicUrls.get(position).getOriginal_pic())
-                    .asBitmap()
+            Glide.with(ImgActivity.this).asBitmap().load(mPicUrls.get(position).getOriginal_pic())
                     .into(new SimpleTarget<Bitmap>() {
                         @Override
-                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                        public void onLoadStarted(Drawable placeholder) {
+                            super.onLoadStarted(placeholder);
+                            pb.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                             pb.setVisibility(View.GONE);
                             siv.setImage(ImageSource.bitmap(resource), new ImageViewState(0, new PointF(0, 0), 0));
                             if (isLong(resource)) {
@@ -149,14 +156,8 @@ public class ImgActivity extends BaseCommonActivity {
                         }
 
                         @Override
-                        public void onLoadStarted(Drawable placeholder) {
-                            super.onLoadStarted(placeholder);
-                            pb.setVisibility(View.VISIBLE);
-                        }
-
-                        @Override
-                        public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                            super.onLoadFailed(e, errorDrawable);
+                        public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                            super.onLoadFailed(errorDrawable);
                             pb.setVisibility(View.GONE);
                         }
                     });

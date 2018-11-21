@@ -5,17 +5,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.jakewharton.rxbinding.view.RxView;
-import com.trello.rxlifecycle.android.FragmentEvent;
+import com.bumptech.glide.request.RequestOptions;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
+import sun.xiaolei.m_base.utils.DataHolder;
+import sun.xiaolei.m_wblib.entity.UserInfo;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.entity.UserInfo;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.ui.profile.friends.FriendsActivity;
 import sunxl8.my_weibo.ui.setting.SettingActivity;
-import sunxl8.my_weibo.utils.DataHolder;
 import sunxl8.myutils.StringUtils;
 
 /**
@@ -82,9 +83,11 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements P
     public void setUserInfo(UserInfo info) {
         tvName.setText(info.getScreen_name());
         tvBrief.setText(StringUtils.isEmpty(info.getDescription()) ? getString(R.string.profile_description_null) : info.getDescription());
+        RequestOptions requestOptions = new RequestOptions()
+                .error(R.drawable.login_profile_default);
         Glide.with(mActivity)
                 .load(info.getProfile_image_url())
-                .error(R.drawable.login_profile_default)
+                .apply(requestOptions)
                 .into(ivHeadicon);
         tvIsVip.setCompoundDrawablesWithIntrinsicBounds(R.drawable.mine_icon_membership, 0, R.drawable.mine_icon_membership_arrow, 0);
         tvIsVip.setText(info.isVerified() ? getString(R.string.profile_membership_vip) : getString(R.string.profile_membership_nomal));

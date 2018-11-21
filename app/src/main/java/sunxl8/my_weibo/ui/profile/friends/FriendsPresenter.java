@@ -1,12 +1,10 @@
 package sunxl8.my_weibo.ui.profile.friends;
 
-import com.trello.rxlifecycle.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.Map;
 
-import rx.functions.Action1;
-import sunxl8.my_weibo.entity.Friends;
-import sunxl8.my_weibo.net.WeiboRequest;
+import sun.xiaolei.m_wblib.net.WeiboRequest;
 import sunxl8.my_weibo.ui.base.BaseActivity;
 import sunxl8.my_weibo.ui.base.BasePresenter;
 

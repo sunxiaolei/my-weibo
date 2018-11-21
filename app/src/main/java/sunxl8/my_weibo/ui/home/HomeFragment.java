@@ -10,15 +10,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.jakewharton.rxbinding.view.RxView;
-import com.trello.rxlifecycle.android.FragmentEvent;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
+import sun.xiaolei.m_wblib.entity.HomeTimeline;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.entity.HomeTimeline;
 import sunxl8.my_weibo.ui.weibo.WeiboAdapter;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.widget.GroupPopWindow;

@@ -10,7 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jakewharton.rxbinding.view.RxView;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +20,6 @@ import sunxl8.library.swipeback.SwipeBackActivityHelper;
 import sunxl8.library.swipeback.SwipeBackLayout;
 import sunxl8.library.swipeback.Utils;
 import sunxl8.my_weibo.R;
-import sunxl8.myutils.StatusBarUtils;
 
 /**
  * Created by sunxl8 on 2017/4/20.

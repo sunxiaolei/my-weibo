@@ -3,8 +3,8 @@ package sunxl8.my_weibo.ui.visitor;
 import android.content.Intent;
 import android.widget.TextView;
 
-import com.jakewharton.rxbinding.view.RxView;
-import com.trello.rxlifecycle.android.FragmentEvent;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import butterknife.BindView;
 import sunxl8.my_weibo.R;

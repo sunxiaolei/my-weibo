@@ -6,8 +6,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.jakewharton.rxbinding.view.RxView;
-import com.trello.rxlifecycle.android.ActivityEvent;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import butterknife.BindView;
 import sunxl8.my_weibo.R;

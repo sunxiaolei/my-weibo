@@ -2,7 +2,7 @@ package sunxl8.my_weibo.ui.profile.friends;
 
 import java.util.Map;
 
-import sunxl8.my_weibo.entity.Friends;
+import sun.xiaolei.m_wblib.entity.Friends;
 import sunxl8.my_weibo.ui.base.IPresenter;
 import sunxl8.my_weibo.ui.base.IView;
 

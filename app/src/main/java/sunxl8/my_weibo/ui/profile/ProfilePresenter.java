@@ -1,13 +1,13 @@
 package sunxl8.my_weibo.ui.profile;
 
 import com.orhanobut.logger.Logger;
-import com.sina.weibo.sdk.auth.sso.AccessTokenKeeper;
-import com.trello.rxlifecycle.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import sunxl8.my_weibo.net.WeiboRequest;
+import sun.xiaolei.m_wblib.WbManager;
+import sun.xiaolei.m_wblib.net.WeiboRequest;
 import sunxl8.my_weibo.ui.base.BaseCommonActivity;
 import sunxl8.my_weibo.ui.base.BasePresenter;
 
@@ -23,7 +23,7 @@ public class ProfilePresenter extends BasePresenter<ProfileContract.View> implem
 
     @Override
     public void getUserInfo() {
-        long uid = Long.parseLong(AccessTokenKeeper.readAccessToken(mActivity).getUid());
+        long uid = Long.parseLong(WbManager.getUid(mActivity));
         Map<String, String> params = new HashMap<>();
         params.put("uid", uid + "");
         WeiboRequest.show(params)
