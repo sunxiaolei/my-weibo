@@ -53,7 +53,7 @@ dependencies {
     implementation 'com.flipboard:bottomsheet-core:1.5.3'
     implementation 'com.flipboard:bottomsheet-commons:1.5.3'
     //长图
-    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.9.0'
     //swipeback
     implementation 'com.github.sunxiaolei:swipeback:1.0.0'
     implementation project(':m_base')

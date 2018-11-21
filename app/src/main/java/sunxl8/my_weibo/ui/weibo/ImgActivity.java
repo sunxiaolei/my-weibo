@@ -3,6 +3,7 @@ package sunxl8.my_weibo.ui.weibo;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
@@ -17,7 +18,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestFutureTarget;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.ImageViewState;
@@ -28,6 +37,8 @@ import com.jakewharton.rxbinding2.support.v4.view.RxViewPager;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -136,31 +147,33 @@ public class ImgActivity extends BaseCommonActivity {
             ProgressBar pb = (ProgressBar) view.findViewById(R.id.progress_img);
             DoubleBounce doubleBounce = new DoubleBounce();
             pb.setIndeterminateDrawable(doubleBounce);
-            Glide.with(ImgActivity.this).asBitmap().load(mPicUrls.get(position).getOriginal_pic())
-                    .into(new SimpleTarget<Bitmap>() {
+            pb.setVisibility(View.VISIBLE);
+            RequestBuilder<File> mRequestBuilder = Glide.with(ImgActivity.this)
+                    .downloadOnly()
+                    .load(mPicUrls.get(position).getOriginal_pic())
+                    .listener(new RequestListener<File>() {
+
+
                         @Override
-                        public void onLoadStarted(Drawable placeholder) {
-                            super.onLoadStarted(placeholder);
-                            pb.setVisibility(View.VISIBLE);
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<File> target, boolean isFirstResource) {
+                            pb.setVisibility(View.GONE);
+                            return false;
                         }
 
                         @Override
-                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        public boolean onResourceReady(File resource, Object model, Target<File> target, DataSource dataSource, boolean isFirstResource) {
                             pb.setVisibility(View.GONE);
-                            siv.setImage(ImageSource.bitmap(resource), new ImageViewState(0, new PointF(0, 0), 0));
-                            if (isLong(resource)) {
-                                siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_CROP);
-                            } else {
-                                siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_INSIDE);
-                            }
-                        }
-
-                        @Override
-                        public void onLoadFailed(@Nullable Drawable errorDrawable) {
-                            super.onLoadFailed(errorDrawable);
-                            pb.setVisibility(View.GONE);
+                            siv.setImage(ImageSource.uri(resource.getAbsolutePath()), new ImageViewState(0, new PointF(0, 0), 0));
+                            siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_INSIDE);
+//                            if (isLong(resource)) {
+//                                siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_CROP);
+//                            } else {
+//                                siv.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_INSIDE);
+//                            }
+                            return false;
                         }
                     });
+            mRequestBuilder.preload();
             RxView.clicks(siv)
                     .subscribe(aVoid -> {
                         ImgActivity.this.finish();
