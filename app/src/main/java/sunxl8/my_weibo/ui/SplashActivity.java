@@ -1,10 +1,18 @@
 package sunxl8.my_weibo.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieComposition;
+import com.airbnb.lottie.LottieOnCompositionLoadedListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,25 +35,27 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ImageView img = new ImageView(this);
-        img.setBackgroundResource(R.drawable.surprise_background_default);
-        setContentView(img);
+        setContentView(R.layout.activity_splash);
 
-        WbManager.checkTokenValid(this, new WbAccessToken() {
+        LottieAnimationView lavO = findViewById(R.id.lav_o);
+
+        lavO.addAnimatorListener(new AnimatorListenerAdapter() {
             @Override
-            public void result(boolean valid) {
-                if (valid) {
-                    mStartIntent = new Intent(SplashActivity.this, MainActivity.class);
-                } else {
-                    mStartIntent = new Intent(SplashActivity.this, VisitorMainActivity.class);
-                }
-                Flowable.timer(2000, TimeUnit.MILLISECONDS)
-                        .subscribe(aLong -> {
-                            finish();
-                            startActivity(mStartIntent);
-                        });
-            }
+            public void onAnimationEnd(Animator animation) {
+                WbManager.checkTokenValid(SplashActivity.this, new WbAccessToken() {
+                    @Override
+                    public void result(boolean valid) {
+                        if (valid) {
+                            mStartIntent = new Intent(SplashActivity.this, MainActivity.class);
+                        } else {
+                            mStartIntent = new Intent(SplashActivity.this, VisitorMainActivity.class);
+                        }
+                        finish();
+                        startActivity(mStartIntent);
+                    }
 
+                });
+            }
         });
 
 

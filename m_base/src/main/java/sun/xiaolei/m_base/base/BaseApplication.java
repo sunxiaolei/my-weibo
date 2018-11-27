@@ -3,6 +3,9 @@ package sun.xiaolei.m_base.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
 import sunxl8.myutils.Utils;
 
 /**
@@ -22,6 +25,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         mContext = this;
         Utils.init(this);
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
     public static Context getContext() {

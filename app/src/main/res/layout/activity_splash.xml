@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_w"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="Mobilo/W.json" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_e"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="Mobilo/E.json" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_i"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="Mobilo/I.json" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_b"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="Mobilo/B.json" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_o"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="Mobilo/O.json" />
+
+
+</LinearLayout>
