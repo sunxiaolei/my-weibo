@@ -12,9 +12,9 @@ import android.text.style.ImageSpan;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import sun.xiaolei.m_base.base.BaseApplication;
 import sunxl8.myutils.SizeUtils;
 import sunxl8.myutils.StringUtils;
+import sunxl8.myutils.Utils;
 
 /**
  * Created by sunxl8 on 2017/4/18.
@@ -48,9 +48,9 @@ public class WeiboTextUtils {
                 int end = start + emoji.length();
                 String imgName = Emoticons.getImgName(emoji);
                 if (!StringUtils.isEmpty(imgName)) {
-                    int resId = BaseApplication.getContext().getResources().getIdentifier(imgName, "drawable", BaseApplication.getContext().getPackageName());
+                    int resId = Utils.getContext().getResources().getIdentifier(imgName, "drawable", Utils.getContext().getPackageName());
                     if (resId != 0) {
-                        Drawable emojiDrawable = BaseApplication.getContext().getResources().getDrawable(resId);
+                        Drawable emojiDrawable = Utils.getContext().getResources().getDrawable(resId);
                         if (emojiDrawable != null) {
                             emojiDrawable.setBounds(0, 0, SizeUtils.sp2px(17), SizeUtils.sp2px(17));
                             ImageSpan imageSpan = new ImageSpan(emojiDrawable, ImageSpan.ALIGN_BOTTOM) {

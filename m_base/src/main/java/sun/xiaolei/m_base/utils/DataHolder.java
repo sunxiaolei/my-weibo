@@ -1,6 +1,7 @@
 package sun.xiaolei.m_base.utils;
 
 import sun.xiaolei.m_base.Constant;
+import sunxl8.myutils.KvUtils;
 import sunxl8.myutils.SPUtils;
 
 /**
@@ -27,26 +28,26 @@ public class DataHolder {
     private String userIcon;
 
     public long getUserId() {
-        return SPUtils.getInstance(Constant.SP_USER).getLong("id");
+        return KvUtils.getLong("id", 0);
     }
 
     public void setUserId(long userId) {
-        SPUtils.getInstance(Constant.SP_USER).put("id", userId);
+        KvUtils.setLong("id", userId);
     }
 
     public String getUserName() {
-        return SPUtils.getInstance(Constant.SP_USER).getString("name");
+        return KvUtils.getString("name", "");
     }
 
     public void setUserName(String userName) {
-        SPUtils.getInstance(Constant.SP_USER).put("name", userName);
+        KvUtils.setString("name", userName);
     }
 
     public String getUserIcon() {
-        return SPUtils.getInstance(Constant.SP_USER).getString("icon");
+        return KvUtils.getString("icon", "");
     }
 
     public void setUserIcon(String userIcon) {
-        SPUtils.getInstance(Constant.SP_USER).put("icon", userIcon);
+        KvUtils.setString("icon", userIcon);
     }
 }

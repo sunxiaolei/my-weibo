@@ -80,7 +80,7 @@ dependencies {
     //tools
     api rootProject.ext.dependencies["logger"]
     api rootProject.ext.dependencies["mmkv"]
-    api 'com.github.sunxiaolei:my-utils:1.0.5'
+    api 'com.github.sunxiaolei:my-utils:1.0.8'
 
 
 }

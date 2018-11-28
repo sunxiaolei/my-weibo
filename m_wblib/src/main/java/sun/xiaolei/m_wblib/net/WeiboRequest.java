@@ -4,7 +4,6 @@ import java.util.Map;
 
 import io.reactivex.Flowable;
 import sun.xiaolei.m_base.Constant;
-import sun.xiaolei.m_base.net.NetworkManager;
 import sun.xiaolei.m_base.net.SchedulersCompat;
 import sun.xiaolei.m_wblib.entity.Friends;
 import sun.xiaolei.m_wblib.entity.HomeTimeline;

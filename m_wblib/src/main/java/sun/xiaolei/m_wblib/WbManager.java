@@ -18,9 +18,9 @@ import java.util.Map;
 
 import io.reactivex.functions.Consumer;
 import sun.xiaolei.m_base.Constant;
-import sun.xiaolei.m_base.base.BaseApplication;
 import sun.xiaolei.m_wblib.entity.Token;
 import sun.xiaolei.m_wblib.net.WeiboRequest;
+import sunxl8.myutils.KvUtils;
 
 /**
  * @author sun
@@ -34,7 +34,7 @@ public class WbManager {
     public static void checkTokenValid(Context context, WbAccessToken listener) {
         if (AccessTokenKeeper.readAccessToken(context).isSessionValid()) {
 //            getToken(context);
-            BaseApplication.token = AccessTokenKeeper.readAccessToken(context).getToken();
+            KvUtils.setString("wbtoken", AccessTokenKeeper.readAccessToken(context).getToken());
             listener.result(true);
         } else {
             listener.result(false);
@@ -82,7 +82,7 @@ public class WbManager {
                 if (mAccessToken.isSessionValid()) {
                     // 保存 Token 到 SharedPreferences
                     AccessTokenKeeper.writeAccessToken(activity, mAccessToken);
-                    BaseApplication.token = mAccessToken.getToken();
+                    KvUtils.setString("wbtoken", mAccessToken.getToken());
                     listener.onSuccess();
 
                 } else {

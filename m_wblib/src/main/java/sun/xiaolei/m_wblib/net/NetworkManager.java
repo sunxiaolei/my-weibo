@@ -1,4 +1,4 @@
-package sun.xiaolei.m_base.net;
+package sun.xiaolei.m_wblib.net;
 
 import android.text.TextUtils;
 
@@ -23,8 +23,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import sun.xiaolei.m_base.Constant;
-import sun.xiaolei.m_base.base.BaseApplication;
+import sunxl8.myutils.KvUtils;
 import sunxl8.myutils.NetworkUtils;
+import sunxl8.myutils.Utils;
 
 /**
  * Created by sunxl8 on 2016/12/21.
@@ -65,7 +66,7 @@ public class NetworkManager {
     }
 
     //设置缓存路径
-    private static File httpCacheDirectory = new File(BaseApplication.getContext().getCacheDir(), "MyWeibo");
+    private static File httpCacheDirectory = new File(Utils.getContext().getCacheDir(), "MyWeibo");
     private static Cache cache = new Cache(httpCacheDirectory, 100 * 1024 * 1024);
 
     private static OkHttpClient getHttpClient(final Map<String, String> headers, boolean addToken) {
@@ -137,7 +138,7 @@ public class NetworkManager {
                 HttpUrl originalHttpUrl = original.url();
 
                 HttpUrl url = originalHttpUrl.newBuilder()
-                        .addQueryParameter(Constant.KEY_ACCESS_TOKEN, BaseApplication.token)
+                        .addQueryParameter(Constant.KEY_ACCESS_TOKEN, KvUtils.getString("wbtoken", ""))
                         .build();
 
                 // Request customization: add request headers

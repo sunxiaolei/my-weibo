@@ -1,11 +1,13 @@
-package sun.xiaolei.m_base.base;
+package sunxl8.my_weibo;
 
 import android.app.Application;
 import android.content.Context;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+import sunxl8.myutils.BuildConfig;
 import sunxl8.myutils.Utils;
 
 /**
@@ -26,6 +28,11 @@ public class BaseApplication extends Application {
         mContext = this;
         Utils.init(this);
         Logger.addLogAdapter(new AndroidLogAdapter());
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
     }
 
     public static Context getContext() {
