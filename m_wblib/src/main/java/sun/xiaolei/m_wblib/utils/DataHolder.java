@@ -1,8 +1,6 @@
-package sun.xiaolei.m_base.utils;
+package sun.xiaolei.m_wblib.utils;
 
-import sun.xiaolei.m_base.Constant;
 import sunxl8.myutils.KvUtils;
-import sunxl8.myutils.SPUtils;
 
 /**
  * Created by sunxl8 on 2017/4/14.

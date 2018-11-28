@@ -35,7 +35,7 @@
 */
 
 
-package sun.xiaolei.m_base.utils;
+package sun.xiaolei.m_wblib.utils;
 
 
 import android.text.TextUtils;
@@ -199,8 +199,6 @@ public class Emoticons {
         emojiMap.put("[落叶]", "w_luoye");
         emojiMap.put("[雪人]", "w_xueren");
         emojiMap.put("[good]", "h_good");
-        emojiMap.put("[哆啦A梦吃惊]", "dorahaose_mobile");
-        emojiMap.put("[哆啦A梦微笑]", "jqmweixiao_mobile");
         emojiMap.put("[哆啦A梦花心]", "dorahaose_mobile");
         emojiMap.put("[弱]", "ruo");
         emojiMap.put("[炸鸡啤酒]", "d_zhajipijiu");
@@ -229,6 +227,36 @@ public class Emoticons {
         emojiMap.put("[X教授]", "xman_jiaoshou");
         emojiMap.put("[天启]", "xman_tianqi");
         emojiMap.put("[抢到啦]", "hb_qiangdao_org");
+
+
+        emojiMap.put("[允悲]", "d_yunbei");
+        emojiMap.put("[跪了]", "d_guile");
+        emojiMap.put("[吃瓜]", "d_chigua");
+        emojiMap.put("[二哈]", "d_erha");
+        emojiMap.put("[并不简单]", "d_bingbujiandan");
+        emojiMap.put("[费解]", "d_feijie");
+        emojiMap.put("[嘿嘿嘿]", "d_heiheihei");
+        emojiMap.put("[星星眼]", "d_xingxingyan");
+        emojiMap.put("[中国赞]", "new_zhongguozan_org");
+        emojiMap.put("[带着微博去旅行]", "eventtravel_org");
+        emojiMap.put("[广告]", "new_guanggao_thumb");
+        emojiMap.put("[小仙女]", "zhongqiu_xiaoxiannv_org");
+        emojiMap.put("[给你小心心]", "qixi2018_xiaoxinxin_org");
+        emojiMap.put("[米奇比心]", "mickey_bixin_org");
+        emojiMap.put("[Aloha]", "mickey_aloha_org");
+        emojiMap.put("[米奇喜欢]", "mickey_xihuan_org");
+        emojiMap.put("[米奇大哭]", "mickey_daku_org");
+        emojiMap.put("[米奇飞吻]", "mickey_feiwen_org");
+        emojiMap.put("[米奇爱你]", "mickey_aini_org");
+        emojiMap.put("[钢铁侠]", "fulian3_gangtiexia01_org");
+        emojiMap.put("[美国队长]", "fulian3_meiguoduizhang01_org");
+        emojiMap.put("[浩克]", "fulian3_haoke01_org");
+        emojiMap.put("[雷神]", "fulian3_leishen01_org");
+        emojiMap.put("[洛基]", "fulian3_luoji01_org");
+        emojiMap.put("[蜘蛛侠]", "fulian3_zhizhuxia01_org");
+        emojiMap.put("[蚁人]", "manwei_yiren_org");
+        emojiMap.put("[哆啦A梦吃惊]", "dorachijing_org");
+        emojiMap.put("[哆啦A梦微笑]", "jqmweixiao_org");
     }
 
     /**

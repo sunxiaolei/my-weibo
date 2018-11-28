@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import sun.xiaolei.m_base.utils.DataHolder;
 import sun.xiaolei.m_wblib.entity.Friends;
+import sun.xiaolei.m_wblib.utils.DataHolder;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
 import sunxl8.my_weibo.ui.profile.FriendsAdapter;

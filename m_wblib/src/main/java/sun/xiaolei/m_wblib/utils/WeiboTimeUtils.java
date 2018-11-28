@@ -1,4 +1,4 @@
-package sun.xiaolei.m_base.utils;
+package sun.xiaolei.m_wblib.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

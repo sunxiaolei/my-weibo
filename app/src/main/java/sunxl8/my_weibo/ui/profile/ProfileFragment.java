@@ -11,8 +11,8 @@ import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
-import sun.xiaolei.m_base.utils.DataHolder;
 import sun.xiaolei.m_wblib.entity.UserInfo;
+import sun.xiaolei.m_wblib.utils.DataHolder;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.base.BaseFragment;
 import sunxl8.my_weibo.ui.profile.friends.FriendsActivity;
