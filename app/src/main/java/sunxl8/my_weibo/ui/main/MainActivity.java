@@ -63,11 +63,12 @@ public class MainActivity extends BaseCommonActivity {
 
     @Override
     protected void initData() {
-        fm = getSupportFragmentManager();
+
     }
 
     @Override
     protected void initView() {
+        fm = getSupportFragmentManager();
         setTabSelection(0);
         RxView.clicks(layoutHome)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))

@@ -63,8 +63,9 @@ dependencies {
     //swipeback
     implementation 'com.github.sunxiaolei:swipeback:1.0.0'
     implementation 'com.airbnb.android:lottie:2.7.0'
-    implementation 'com.alibaba:arouter-api:1.4.1'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
     implementation project(':m_base')
     implementation project(':m_wblib')
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }

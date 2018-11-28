@@ -78,15 +78,10 @@ public class ImgActivity extends BaseCommonActivity {
         return R.layout.activity_img;
     }
 
-
-    @Override
-    protected void initData() {
-        mPicUrls = (List<PicUrl>) getIntent().getSerializableExtra("imgs");
-        mPosition = getIntent().getIntExtra("mPosition", 0);
-    }
-
     @Override
     protected void initView() {
+        mPicUrls = (List<PicUrl>) getIntent().getSerializableExtra("imgs");
+        mPosition = getIntent().getIntExtra("mPosition", 0);
         mAdapter = new ImgPagAdapter(getImgViews(mPicUrls), mPicUrls);
         RxViewPager.pageSelections(mViewPager)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
@@ -100,6 +95,11 @@ public class ImgActivity extends BaseCommonActivity {
                 .subscribe(aVoid -> {
                     new ImgMenuFragment().show(getSupportFragmentManager(), R.id.bottomsheet_img);
                 });
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     private List<View> getImgViews(List<PicUrl> imgs) {

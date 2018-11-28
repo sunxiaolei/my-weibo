@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import sunxl8.myutils.StatusBarUtils;
@@ -30,6 +31,7 @@ public class BaseActivity extends RxAppCompatActivity {
                 .setLightStatusBar(true)
                 .process(this);
         super.onCreate(savedInstanceState);
+        ARouter.getInstance().inject(this);
     }
 
     public void showToast(String msg) {

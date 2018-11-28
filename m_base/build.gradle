@@ -11,6 +11,12 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -81,6 +87,6 @@ dependencies {
     api rootProject.ext.dependencies["logger"]
     api rootProject.ext.dependencies["mmkv"]
     api 'com.github.sunxiaolei:my-utils:1.0.8'
-
+    api 'com.alibaba:arouter-api:1.4.1'
 
 }

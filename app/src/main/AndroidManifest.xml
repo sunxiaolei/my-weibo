@@ -29,6 +29,7 @@
         <activity android:name=".ui.weibo.ImgActivity" />
         <activity android:name=".ui.weibo.WeiboActivity" />
         <activity android:name=".ui.profile.friends.FriendsActivity" />
+        <activity android:name=".ui.user.UserActivity" />
     </application>
 
 </manifest>

@@ -4,9 +4,11 @@ import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -36,12 +38,15 @@ public class WeiboAdapter extends BaseQuickAdapter<StatusesBean, BaseViewHolder>
     protected void convert(BaseViewHolder holder, StatusesBean bean) {
         Glide.with(mContext).load(bean.getUser().getAvatar_hd()).into((ImageView) holder.getView(R.id.iv_item_user_icon));
         String from = Html.fromHtml(bean.getSource()).toString();
+        //微博内容
+        TextView tvContent = holder.getView(R.id.tv_item_content);
+        tvContent.setText(WeiboTextUtils.getWeiBoContent(bean.getText()));
+        tvContent.setMovementMethod(LinkMovementMethod.getInstance());
         holder.setText(R.id.tv_item_name, bean.getUser().getName())
                 .setTextColor(R.id.tv_item_name, bean.getUser().isVerified()
                         ? mContext.getResources().getColor(R.color.colorTextVip) : mContext.getResources().getColor(R.color.colorTextItemPrimary))
                 .setText(R.id.tv_item_from, WeiboTimeUtils.convertTime(bean.getCreated_at()) + "   " +
                         (StringUtils.isEmpty(from) ? "" : mContext.getString(R.string.from) + "  " + from))
-                .setText(R.id.tv_item_content, WeiboTextUtils.getWeiBoContent(bean.getText()))
                 .setText(R.id.tv_item_retweet, String.valueOf(bean.getReposts_count()))
                 .setText(R.id.tv_item_comment, String.valueOf(bean.getComments_count()))
                 .setText(R.id.tv_item_like, String.valueOf(bean.getAttitudes_count()));
@@ -64,9 +69,11 @@ public class WeiboAdapter extends BaseQuickAdapter<StatusesBean, BaseViewHolder>
         }
 
         if (bean.getRetweeted_status() != null) {
-            holder.getView(R.id.layout_item_source).setVisibility(View.VISIBLE);
-            holder.setText(R.id.tv_item_source_content, WeiboTextUtils.getWeiBoContent(
+            TextView tvSourceContent = holder.getView(R.id.tv_item_source_content);
+            tvSourceContent.setText(WeiboTextUtils.getWeiBoContent(
                     "@" + bean.getRetweeted_status().getUser().getName() + ":" + bean.getRetweeted_status().getText()));
+            tvSourceContent.setMovementMethod(LinkMovementMethod.getInstance());
+            holder.getView(R.id.layout_item_source).setVisibility(View.VISIBLE);
             RecyclerView rvSource = holder.getView(R.id.rv_item_source_img);
             switch (bean.getRetweeted_status().getPic_urls().size()) {
                 case 1:

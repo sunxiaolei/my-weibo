@@ -7,7 +7,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
-import sunxl8.myutils.BuildConfig;
 import sunxl8.myutils.Utils;
 
 /**
@@ -17,10 +16,6 @@ import sunxl8.myutils.Utils;
 public class BaseApplication extends Application {
 
     private static Context mContext;
-
-    public static String account;
-
-    public static String token;
 
     @Override
     public void onCreate() {

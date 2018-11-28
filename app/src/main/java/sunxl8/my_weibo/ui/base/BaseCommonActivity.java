@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import butterknife.BindView;
@@ -39,6 +40,7 @@ public abstract class BaseCommonActivity<T extends IPresenter> extends BaseActiv
             mPresenter.attachView(this);
         }
         super.onCreate(savedInstanceState);
+        ARouter.getInstance().inject(this);
         setContentView(setContentViewId());
         mUnbinder = ButterKnife.bind(this);
         if (mBack != null) {
@@ -47,8 +49,8 @@ public abstract class BaseCommonActivity<T extends IPresenter> extends BaseActiv
                         finish();
                     });
         }
-        initData();
         initView();
+        initData();
     }
 
     @Override
@@ -64,9 +66,9 @@ public abstract class BaseCommonActivity<T extends IPresenter> extends BaseActiv
 
     protected abstract int setContentViewId();
 
-    protected abstract void initData();
-
     protected abstract void initView();
+
+    protected abstract void initData();
 
     @Override
     protected void onDestroy() {

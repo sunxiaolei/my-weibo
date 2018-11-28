@@ -1,17 +1,16 @@
 package sun.xiaolei.m_wblib.utils;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import sun.xiaolei.m_wblib.widget.UserClickSpan;
 import sunxl8.myutils.SizeUtils;
 import sunxl8.myutils.StringUtils;
 import sunxl8.myutils.Utils;
@@ -41,7 +40,9 @@ public class WeiboTextUtils {
             if (at != null) {
                 int start = matcher.start(1);
                 int end = start + at.length();
-                spannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#507daf")), start, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+                UserClickSpan span = new UserClickSpan(at.replace("@", ""));
+                spannableStringBuilder.setSpan(span, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             if (emoji != null) {
                 int start = matcher.start(4);
