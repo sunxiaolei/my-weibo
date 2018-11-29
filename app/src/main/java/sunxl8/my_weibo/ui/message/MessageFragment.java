@@ -6,9 +6,8 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
-import butterknife.BindView;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseFragment;
+import sun.xiaolei.m_common.base.BaseFragment;
 import sunxl8.my_weibo.widget.NewchatPopWindow;
 
 /**
@@ -17,10 +16,8 @@ import sunxl8.my_weibo.widget.NewchatPopWindow;
 
 public class MessageFragment extends BaseFragment<MessagePresenter> implements MessageContract.View {
 
-    @BindView(R.id.tv_navigation_findgroup)
-    TextView tvFindGroup;
-    @BindView(R.id.iv_navigation_newchat)
-    ImageView ivNewchat;
+    private TextView tvFindGroup;
+    private ImageView ivNewchat;
 
     private NewchatPopWindow newchatPopWindow;
 
@@ -41,6 +38,8 @@ public class MessageFragment extends BaseFragment<MessagePresenter> implements M
 
     @Override
     protected void initView() {
+        tvFindGroup = findViewById(R.id.tv_navigation_findgroup);
+        ivNewchat = findViewById(R.id.iv_navigation_newchat);
         RxView.clicks(ivNewchat)
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(aVoid -> {

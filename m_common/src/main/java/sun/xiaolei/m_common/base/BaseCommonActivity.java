@@ -1,4 +1,4 @@
-package sunxl8.my_weibo.ui.base;
+package sun.xiaolei.m_common.base;
 
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
@@ -10,10 +10,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.jakewharton.rxbinding2.view.RxView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import sunxl8.my_weibo.R;
+import sun.xiaolei.m_common.R;
 
 
 /**
@@ -23,14 +20,9 @@ import sunxl8.my_weibo.R;
 public abstract class BaseCommonActivity<T extends IPresenter> extends BaseActivity implements IView {
 
     protected T mPresenter;
-    protected Unbinder mUnbinder;
 
-    @Nullable
-    @BindView(R.id.tv_topbar_title)
     protected TextView mTitle;
-    @Nullable
-    @BindView(R.id.iv_topbar_back)
-    ImageView mBack;
+    protected ImageView mBack;
 
     @Override
     @CallSuper
@@ -42,7 +34,8 @@ public abstract class BaseCommonActivity<T extends IPresenter> extends BaseActiv
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
         setContentView(setContentViewId());
-        mUnbinder = ButterKnife.bind(this);
+        mTitle = findViewById(R.id.tv_topbar_title);
+        mBack = findViewById(R.id.iv_topbar_back);
         if (mBack != null) {
             RxView.clicks(mBack)
                     .subscribe(aVoid -> {
@@ -74,7 +67,6 @@ public abstract class BaseCommonActivity<T extends IPresenter> extends BaseActiv
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) mPresenter.detachView();
-        if (mUnbinder != null) mUnbinder.unbind();
     }
 
 }

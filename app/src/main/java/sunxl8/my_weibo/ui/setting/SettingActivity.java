@@ -8,10 +8,9 @@ import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
-import butterknife.BindView;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
-import sunxl8.my_weibo.ui.base.IPresenter;
+import sun.xiaolei.m_common.base.BaseSwipeActivity;
+import sun.xiaolei.m_common.base.IPresenter;
 import sunxl8.myutils.CleanUtils;
 import sunxl8.myutils.FileUtils;
 
@@ -21,12 +20,9 @@ import sunxl8.myutils.FileUtils;
 
 public class SettingActivity extends BaseSwipeActivity {
 
-    @BindView(R.id.layout_setting_account_manage)
-    RelativeLayout layoutAccountManage;
-    @BindView(R.id.layout_setting_clean_cache)
-    RelativeLayout layoutCleanCache;
-    @BindView(R.id.tv_setting_cache)
-    TextView tvCache;
+    private RelativeLayout layoutAccountManage;
+    private RelativeLayout layoutCleanCache;
+    private TextView tvCache;
 
     @Override
     protected IPresenter createPresenter() {
@@ -45,6 +41,9 @@ public class SettingActivity extends BaseSwipeActivity {
 
     @Override
     protected void initView() {
+        layoutAccountManage = (RelativeLayout) findViewById(R.id.layout_setting_account_manage);
+        layoutCleanCache = (RelativeLayout) findViewById(R.id.layout_setting_clean_cache);
+        tvCache = (TextView) findViewById(R.id.tv_setting_cache);
         mTitle.setText(getString(R.string.navigation_setting));
         RxView.clicks(layoutAccountManage)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))

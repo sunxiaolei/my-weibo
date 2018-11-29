@@ -15,7 +15,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import sun.xiaolei.m_wblib.entity.StatusesBean;
-import sun.xiaolei.m_wblib.utils.WeiboTextUtils;
+import sun.xiaolei.m_common.utils.WeiboTextUtils;
 import sun.xiaolei.m_wblib.utils.WeiboTimeUtils;
 import sunxl8.my_weibo.R;
 import sunxl8.myutils.ScreenUtils;

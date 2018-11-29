@@ -1,4 +1,4 @@
-package sunxl8.my_weibo.ui.base;
+package sun.xiaolei.m_common.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +8,6 @@ import android.view.ViewGroup;
 
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
-
 /**
  * Created by sunxl8 on 2016/12/21.
  */
@@ -19,22 +15,22 @@ import butterknife.Unbinder;
 public abstract class BaseFragment<T extends IPresenter> extends RxFragment implements IView {
 
     protected T mPresenter;
-    private Unbinder mUnbinder;
     protected BaseCommonActivity mActivity;
+
+    private View rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(setContentViewId(), container, false);
-        mUnbinder = ButterKnife.bind(this, view);
+        rootView = inflater.inflate(setContentViewId(), container, false);
         mActivity = (BaseCommonActivity) getActivity();
         mPresenter = createPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
-        initData();
         initView();
-        return view;
+        initData();
+        return rootView;
     }
 
     protected boolean isVisible;
@@ -61,6 +57,9 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
     public void onDestroyView() {
         super.onDestroyView();
         if (mPresenter != null) mPresenter.detachView();
-        if (mUnbinder != null) mUnbinder.unbind();
+    }
+
+    protected <V extends View> V findViewById(int id) {
+        return rootView.findViewById(id);
     }
 }

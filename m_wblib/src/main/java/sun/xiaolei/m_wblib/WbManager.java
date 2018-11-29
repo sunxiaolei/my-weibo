@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.functions.Consumer;
-import sun.xiaolei.m_base.Constant;
 import sun.xiaolei.m_wblib.entity.Token;
 import sun.xiaolei.m_wblib.net.WeiboRequest;
 import sunxl8.myutils.KvUtils;

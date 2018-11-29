@@ -4,12 +4,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sun.xiaolei.m_wblib.utils.DataHolder;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
-import sunxl8.my_weibo.ui.base.IPresenter;
+import sun.xiaolei.m_common.base.BaseSwipeActivity;
+import sun.xiaolei.m_common.base.IPresenter;
 
 /**
  * Created by sunxl8 on 2017/4/10.
@@ -17,10 +16,8 @@ import sunxl8.my_weibo.ui.base.IPresenter;
 
 public class AccountManagerActivity extends BaseSwipeActivity {
 
-    @BindView(R.id.iv_account_icon)
-    CircleImageView ivIcon;
-    @BindView(R.id.tv_account_name)
-    TextView tvName;
+    private CircleImageView ivIcon;
+    private TextView tvName;
 
     @Override
     protected IPresenter createPresenter() {
@@ -39,6 +36,8 @@ public class AccountManagerActivity extends BaseSwipeActivity {
 
     @Override
     protected void initView() {
+        ivIcon = (CircleImageView) findViewById(R.id.iv_account_icon);
+        tvName = (TextView) findViewById(R.id.tv_account_name);
         mTitle.setText(getString(R.string.setting_account_manage));
         Glide.with(this).load(DataHolder.getInstanse().getUserIcon()).into(ivIcon);
         tvName.setText(DataHolder.getInstanse().getUserName());

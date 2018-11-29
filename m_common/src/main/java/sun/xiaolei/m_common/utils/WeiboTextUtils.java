@@ -1,4 +1,4 @@
-package sun.xiaolei.m_wblib.utils;
+package sun.xiaolei.m_common.utils;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -10,7 +10,8 @@ import android.text.style.ImageSpan;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import sun.xiaolei.m_wblib.widget.UserClickSpan;
+import sun.xiaolei.m_wblib.utils.Emoticons;
+import sun.xiaolei.m_common.widget.UserClickSpan;
 import sunxl8.myutils.SizeUtils;
 import sunxl8.myutils.StringUtils;
 import sunxl8.myutils.Utils;

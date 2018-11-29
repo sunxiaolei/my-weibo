@@ -1,4 +1,4 @@
-package sun.xiaolei.m_base;
+package sun.xiaolei.m_wblib;
 
 /**
  * Created by sunxl8 on 2017/4/12.
@@ -18,7 +18,5 @@ public class Constant {
 
     public static final String KEY_ACCESS_TOKEN = "access_token";
 
-
-    public static final String SP_USER = "sp_user";
 
 }

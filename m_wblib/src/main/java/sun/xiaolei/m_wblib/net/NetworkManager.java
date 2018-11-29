@@ -22,7 +22,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import sun.xiaolei.m_base.Constant;
+import sun.xiaolei.m_wblib.Constant;
 import sunxl8.myutils.KvUtils;
 import sunxl8.myutils.NetworkUtils;
 import sunxl8.myutils.Utils;

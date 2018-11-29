@@ -1,8 +1,8 @@
 package sunxl8.my_weibo.ui.discover;
 
 
-import sunxl8.my_weibo.ui.base.BasePresenter;
-import sunxl8.my_weibo.ui.base.BaseCommonActivity;
+import sun.xiaolei.m_common.base.BasePresenter;
+import sun.xiaolei.m_common.base.BaseCommonActivity;
 
 /**
  * Created by sunxl8 on 2017/4/10.

@@ -1,4 +1,4 @@
-package sun.xiaolei.m_wblib.widget;
+package sun.xiaolei.m_common.widget;
 
 import android.graphics.Color;
 import android.text.TextPaint;
@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
-import sun.xiaolei.m_base.RouteTable;
+import sun.xiaolei.m_common.RouteTable;
 
 /**
  * @author sun

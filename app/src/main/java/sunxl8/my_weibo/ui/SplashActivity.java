@@ -21,6 +21,7 @@ import sun.xiaolei.m_wblib.WbManager;
 import sun.xiaolei.m_wblib.WbAccessToken;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.main.MainActivity;
+import sunxl8.my_weibo.ui.user.UserActivity;
 import sunxl8.my_weibo.ui.visitor.VisitorMainActivity;
 
 /**
@@ -47,8 +48,10 @@ public class SplashActivity extends AppCompatActivity {
                     public void result(boolean valid) {
                         if (valid) {
                             mStartIntent = new Intent(SplashActivity.this, MainActivity.class);
+//                            mStartIntent = new Intent(SplashActivity.this, UserActivity.class);
                         } else {
                             mStartIntent = new Intent(SplashActivity.this, VisitorMainActivity.class);
+//                            mStartIntent = new Intent(SplashActivity.this, UserActivity.class);
                         }
                         finish();
                         startActivity(mStartIntent);

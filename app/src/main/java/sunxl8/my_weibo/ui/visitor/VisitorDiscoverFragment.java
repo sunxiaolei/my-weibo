@@ -1,8 +1,8 @@
 package sunxl8.my_weibo.ui.visitor;
 
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseFragment;
-import sunxl8.my_weibo.ui.base.IPresenter;
+import sun.xiaolei.m_common.base.BaseFragment;
+import sun.xiaolei.m_common.base.IPresenter;
 
 /**
  * Created by sunxl8 on 2017/4/10.

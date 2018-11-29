@@ -1,6 +1,5 @@
 package sunxl8.my_weibo.ui.profile.friends;
 
-import android.app.Activity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,11 +13,10 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.BindView;
 import sun.xiaolei.m_wblib.entity.Friends;
 import sun.xiaolei.m_wblib.utils.DataHolder;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
+import sun.xiaolei.m_common.base.BaseSwipeActivity;
 import sunxl8.my_weibo.ui.profile.FriendsAdapter;
 
 /**
@@ -28,10 +26,8 @@ import sunxl8.my_weibo.ui.profile.FriendsAdapter;
 
 public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> implements FriendsContact.View {
 
-    @BindView(R.id.refresh_friends)
-    SwipeRefreshLayout layoutRefresh;
-    @BindView(R.id.rv_friends)
-    RecyclerView rvFriends;
+    private SwipeRefreshLayout layoutRefresh;
+    private RecyclerView rvFriends;
 
     private FriendsAdapter mAdapter;
 
@@ -75,6 +71,8 @@ public class FriendsActivity extends BaseSwipeActivity<FriendsPresenter> impleme
 
     @Override
     protected void initView() {
+        layoutRefresh = (SwipeRefreshLayout) findViewById(R.id.refresh_friends);
+        rvFriends = (RecyclerView) findViewById(R.id.rv_friends);
         mTitle.setText(getString(R.string.my_friends));
         rvFriends.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new FriendsAdapter(this);

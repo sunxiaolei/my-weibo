@@ -10,14 +10,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-
-import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sun.xiaolei.m_wblib.entity.StatusesBean;
-import sun.xiaolei.m_wblib.utils.WeiboTextUtils;
+import sun.xiaolei.m_common.utils.WeiboTextUtils;
 import sun.xiaolei.m_wblib.utils.WeiboTimeUtils;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseSwipeActivity;
+import sun.xiaolei.m_common.base.BaseSwipeActivity;
 import sunxl8.myutils.ScreenUtils;
 import sunxl8.myutils.StringUtils;
 
@@ -27,17 +25,11 @@ import sunxl8.myutils.StringUtils;
 
 public class WeiboActivity extends BaseSwipeActivity<WeiboPresenter> implements WeiboContract.View {
 
-    @BindView(R.id.layout_weibo_item)
     LinearLayout layout;
-    @BindView(R.id.iv_weibo_user_icon)
     CircleImageView ivIcon;
-    @BindView(R.id.tv_weibo_name)
     TextView tvName;
-    @BindView(R.id.tv_weibo_from)
     TextView tvFrom;
-    @BindView(R.id.tv_weibo_content)
     TextView tvContent;
-    @BindView(R.id.rv_weibo_img)
     RecyclerView rvImg;
 
     private StatusesBean bean;
@@ -50,6 +42,17 @@ public class WeiboActivity extends BaseSwipeActivity<WeiboPresenter> implements 
     @Override
     protected int setContentViewId() {
         return R.layout.activity_weibo;
+    }
+
+    @Override
+    protected void initView() {
+        layout = (LinearLayout) findViewById(R.id.layout_weibo_item);
+        ivIcon = (CircleImageView) findViewById(R.id.iv_weibo_user_icon);
+        tvName = (TextView) findViewById(R.id.tv_weibo_name);
+        tvFrom = (TextView) findViewById(R.id.tv_weibo_from);
+        tvContent = (TextView) findViewById(R.id.tv_weibo_content);
+        rvImg = (RecyclerView) findViewById(R.id.rv_weibo_img);
+        mTitle.setText(getString(R.string.weibo_body));
     }
 
     @Override
@@ -79,11 +82,6 @@ public class WeiboActivity extends BaseSwipeActivity<WeiboPresenter> implements 
                 rvImg.setAdapter(new ImgAdapter(this, bean.getPic_urls(), 3));
                 break;
         }
-    }
-
-    @Override
-    protected void initView() {
-        mTitle.setText(getString(R.string.weibo_body));
     }
 
     @Override

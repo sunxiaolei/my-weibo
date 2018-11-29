@@ -1,7 +1,7 @@
 package sunxl8.my_weibo.ui.user;
 
-import sunxl8.my_weibo.ui.base.IPresenter;
-import sunxl8.my_weibo.ui.base.IView;
+import sun.xiaolei.m_common.base.IPresenter;
+import sun.xiaolei.m_common.base.IView;
 
 /**
  * @author sun

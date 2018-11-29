@@ -1,9 +1,7 @@
 package sunxl8.my_weibo.ui.discover;
 
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseFragment;
-import sunxl8.my_weibo.ui.home.HomeContract;
-import sunxl8.my_weibo.ui.home.HomePresenter;
+import sun.xiaolei.m_common.base.BaseFragment;
 
 /**
  * Created by sunxl8 on 2017/4/10.

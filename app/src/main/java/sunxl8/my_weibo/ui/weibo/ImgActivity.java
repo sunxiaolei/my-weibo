@@ -3,10 +3,7 @@ package sunxl8.my_weibo.ui.weibo;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.PointF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -19,15 +16,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestFutureTarget;
 import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
-import com.bumptech.glide.request.transition.Transition;
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.ImageViewState;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
@@ -38,16 +30,14 @@ import com.jakewharton.rxbinding2.view.RxView;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import sun.xiaolei.m_wblib.entity.PicUrl;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseCommonActivity;
-import sunxl8.my_weibo.ui.base.IPresenter;
+import sun.xiaolei.m_common.base.BaseCommonActivity;
+import sun.xiaolei.m_common.base.IPresenter;
 
 /**
  * Created by sunxl8 on 2017/4/18.
@@ -55,14 +45,10 @@ import sunxl8.my_weibo.ui.base.IPresenter;
 
 public class ImgActivity extends BaseCommonActivity {
 
-    @BindView(R.id.vp_img)
-    ViewPager mViewPager;
-    @BindView(R.id.tv_img_page)
-    TextView tvPage;
-    @BindView(R.id.iv_img_more)
-    ImageView ivMore;
-    @BindView(R.id.bottomsheet_img)
-    BottomSheetLayout bottomSheetLayout;
+    private ViewPager mViewPager;
+    private TextView tvPage;
+    private ImageView ivMore;
+    private BottomSheetLayout bottomSheetLayout;
 
     private List<PicUrl> mPicUrls;
     private int mPosition;
@@ -80,6 +66,10 @@ public class ImgActivity extends BaseCommonActivity {
 
     @Override
     protected void initView() {
+        mViewPager = findViewById(R.id.vp_img);
+        tvPage = findViewById(R.id.tv_img_page);
+        ivMore = findViewById(R.id.iv_img_more);
+        bottomSheetLayout = findViewById(R.id.bottomsheet_img);
         mPicUrls = (List<PicUrl>) getIntent().getSerializableExtra("imgs");
         mPosition = getIntent().getIntExtra("mPosition", 0);
         mAdapter = new ImgPagAdapter(getImgViews(mPicUrls), mPicUrls);

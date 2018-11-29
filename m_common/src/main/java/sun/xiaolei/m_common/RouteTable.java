@@ -1,4 +1,4 @@
-package sun.xiaolei.m_base;
+package sun.xiaolei.m_common;
 
 /**
  * @author sun

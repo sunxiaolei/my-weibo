@@ -6,10 +6,9 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
-import butterknife.BindView;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseFragment;
-import sunxl8.my_weibo.ui.base.IPresenter;
+import sun.xiaolei.m_common.base.BaseFragment;
+import sun.xiaolei.m_common.base.IPresenter;
 
 /**
  * Created by sunxl8 on 2017/4/10.
@@ -17,7 +16,6 @@ import sunxl8.my_weibo.ui.base.IPresenter;
 
 public class VisitorProfileFragment extends BaseFragment {
 
-    @BindView(R.id.tv_navigation_setting)
     TextView tvSetting;
 
     @Override
@@ -37,6 +35,7 @@ public class VisitorProfileFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        tvSetting = (TextView) findViewById(R.id.tv_navigation_setting);
         RxView.clicks(tvSetting)
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(aVoid -> {

@@ -8,10 +8,9 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
-import butterknife.BindView;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseFragment;
-import sunxl8.my_weibo.ui.base.IPresenter;
+import sun.xiaolei.m_common.base.BaseFragment;
+import sun.xiaolei.m_common.base.IPresenter;
 
 /**
  * Created by sunxl8 on 2017/4/10.
@@ -19,12 +18,9 @@ import sunxl8.my_weibo.ui.base.IPresenter;
 
 public class VisitorHomeFragment extends BaseFragment {
 
-    @BindView(R.id.iv_visitor_home_smallicon)
-    ImageView iv;
-    @BindView(R.id.tv_navigation_register)
-    TextView tvRegister;
-    @BindView(R.id.tv_navigation_login)
-    TextView tvLogin;
+    private ImageView iv;
+    private TextView tvRegister;
+    private TextView tvLogin;
 
     @Override
     protected IPresenter createPresenter() {
@@ -43,12 +39,15 @@ public class VisitorHomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        iv = (ImageView) findViewById(R.id.iv_visitor_home_smallicon);
+        tvRegister = (TextView) findViewById(R.id.tv_navigation_register);
+        tvLogin = (TextView) findViewById(R.id.tv_navigation_login);
         Animation animation = AnimationUtils.loadAnimation(mActivity, R.anim.rotate);
         iv.startAnimation(animation);
         RxView.clicks(tvLogin)
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(aVoid -> {
-                    ((VisitorMainActivity)mActivity).login();
+                    ((VisitorMainActivity) mActivity).login();
                 });
     }
 

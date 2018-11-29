@@ -1,4 +1,4 @@
-package sunxl8.my_weibo.ui.base;
+package sun.xiaolei.m_common.base;
 
 import android.content.Context;
 import android.content.DialogInterface;

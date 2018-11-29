@@ -16,11 +16,10 @@ import com.trello.rxlifecycle2.android.FragmentEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.BindView;
 import sun.xiaolei.m_wblib.entity.HomeTimeline;
 import sunxl8.my_weibo.R;
 import sunxl8.my_weibo.ui.weibo.WeiboAdapter;
-import sunxl8.my_weibo.ui.base.BaseFragment;
+import sun.xiaolei.m_common.base.BaseFragment;
 import sunxl8.my_weibo.widget.GroupPopWindow;
 import sunxl8.my_weibo.widget.RadarPopWindow;
 import sunxl8.my_weibo.widget.WrapContentLinearLayoutManager;
@@ -31,18 +30,12 @@ import sunxl8.my_weibo.widget.WrapContentLinearLayoutManager;
 
 public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View {
 
-    @BindView(R.id.refresh_fragment_home)
-    SwipeRefreshLayout layoutRefresh;
-    @BindView(R.id.layout_navigation)
-    RelativeLayout layoutNavigation;
-    @BindView(R.id.iv_navigation_friendattention)
-    ImageView ivNavigationFriend;
-    @BindView(R.id.iv_navigation_radar)
-    ImageView ivNavigationRadar;
-    @BindView(R.id.tv_navigation_name)
-    TextView tvNavigationName;
-    @BindView(R.id.rv_fragment_home)
-    RecyclerView xrvHomeTimeline;
+    private SwipeRefreshLayout layoutRefresh;
+    private RelativeLayout layoutNavigation;
+    private ImageView ivNavigationFriend;
+    private ImageView ivNavigationRadar;
+    private TextView tvNavigationName;
+    private RecyclerView xrvHomeTimeline;
 
     private WeiboAdapter mAdapter;
     private RadarPopWindow radarPopWindow;
@@ -67,6 +60,12 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     protected void initView() {
+        layoutRefresh = findViewById(R.id.refresh_fragment_home);
+        layoutNavigation = findViewById(R.id.layout_navigation);
+        ivNavigationFriend = findViewById(R.id.iv_navigation_friendattention);
+        ivNavigationRadar = findViewById(R.id.iv_navigation_radar);
+        tvNavigationName = findViewById(R.id.tv_navigation_name);
+        xrvHomeTimeline = findViewById(R.id.rv_fragment_home);
         RxView.clicks(ivNavigationFriend)
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(aVoid -> {

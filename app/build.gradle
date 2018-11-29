@@ -46,25 +46,9 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    //ButterKnife
-    implementation 'com.jakewharton:butterknife:9.0.0-rc2'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
-    //circleimageview
-    implementation 'de.hdodenhof:circleimageview:2.1.0'
-    //recyclerview
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
-    //loading
-    implementation 'com.github.ybq:Android-SpinKit:1.2.0'
-    //bottomsheet
-    implementation 'com.flipboard:bottomsheet-core:1.5.3'
-    implementation 'com.flipboard:bottomsheet-commons:1.5.3'
-    //长图
-    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.9.0'
-    //swipeback
-    implementation 'com.github.sunxiaolei:swipeback:1.0.0'
-    implementation 'com.airbnb.android:lottie:2.7.0'
 
     implementation project(':m_base')
+    implementation project(':m_common')
     implementation project(':m_wblib')
 
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'

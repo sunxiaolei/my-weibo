@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion as int
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    //circleimageview
+    api 'de.hdodenhof:circleimageview:2.1.0'
+    //recyclerview
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
+    //loading
+    api 'com.github.ybq:Android-SpinKit:1.2.0'
+    //bottomsheet
+    api 'com.flipboard:bottomsheet-core:1.5.3'
+    api 'com.flipboard:bottomsheet-commons:1.5.3'
+    //长图
+    api 'com.davemorrissey.labs:subsampling-scale-image-view:3.9.0'
+    //swipeback
+    api 'com.github.sunxiaolei:swipeback:1.0.0'
+    api 'com.airbnb.android:lottie:2.7.0'
+
+    implementation project(':m_base')
+    implementation project(':m_wblib')
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+}

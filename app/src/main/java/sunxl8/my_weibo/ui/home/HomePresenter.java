@@ -5,8 +5,8 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
 import java.util.Map;
 
 import sun.xiaolei.m_wblib.net.WeiboRequest;
-import sunxl8.my_weibo.ui.base.BaseCommonActivity;
-import sunxl8.my_weibo.ui.base.BasePresenter;
+import sun.xiaolei.m_common.base.BaseCommonActivity;
+import sun.xiaolei.m_common.base.BasePresenter;
 
 /**
  * Created by sunxl8 on 2017/4/10.

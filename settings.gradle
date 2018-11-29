@@ -1,1 +1,1 @@
-include ':app', ':m_wblib', ':m_base'
+include ':app', ':m_wblib', ':m_base', ':m_common'

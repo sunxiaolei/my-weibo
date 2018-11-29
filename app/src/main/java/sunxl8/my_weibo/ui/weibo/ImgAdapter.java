@@ -13,8 +13,6 @@ import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import sun.xiaolei.m_wblib.entity.PicUrl;
 import sunxl8.my_weibo.R;
 
@@ -74,14 +72,13 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.iv_item_img1)
         ImageView ivImg1;
-        @BindView(R.id.iv_item_img3)
         ImageView ivImg3;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            ivImg1 = itemView.findViewById(R.id.iv_item_img1);
+            ivImg3 = itemView.findViewById(R.id.iv_item_img3);
         }
     }
 }

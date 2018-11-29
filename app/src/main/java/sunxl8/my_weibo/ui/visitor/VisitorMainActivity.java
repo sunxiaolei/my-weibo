@@ -10,39 +10,27 @@ import android.widget.LinearLayout;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
-import butterknife.BindView;
 import sun.xiaolei.m_wblib.AuthorizeListener;
 import sun.xiaolei.m_wblib.WbManager;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseCommonActivity;
-import sunxl8.my_weibo.ui.base.IPresenter;
+import sun.xiaolei.m_common.base.BaseCommonActivity;
+import sun.xiaolei.m_common.base.IPresenter;
 import sunxl8.my_weibo.ui.main.MainActivity;
 import sunxl8.my_weibo.widget.AddView;
 
 public class VisitorMainActivity extends BaseCommonActivity {
 
-    @BindView(R.id.layout_container)
-    FrameLayout mLayout;
-    @BindView(R.id.layout_tabbar_home)
-    LinearLayout layoutHome;
-    @BindView(R.id.layout_tabbar_message)
-    LinearLayout layoutMessage;
-    @BindView(R.id.layout_tabbar_discover)
-    LinearLayout layoutDiscover;
-    @BindView(R.id.layout_tabbar_profile)
-    LinearLayout layoutProfile;
-    @BindView(R.id.iv_tabbar_home)
-    ImageView mViewHome;
-    @BindView(R.id.iv_tabbar_message)
-    ImageView mViewMessage;
-    @BindView(R.id.iv_tabbar_discover)
-    ImageView mViewDiscover;
-    @BindView(R.id.iv_tabbar_profile)
-    ImageView mViewProfile;
-    @BindView(R.id.iv_tabbar_add)
-    ImageView mViewAdd;
-    @BindView(R.id.view_add)
-    AddView viewAdd;
+    private FrameLayout mLayout;
+    private LinearLayout layoutHome;
+    private LinearLayout layoutMessage;
+    private LinearLayout layoutDiscover;
+    private LinearLayout layoutProfile;
+    private ImageView mViewHome;
+    private ImageView mViewMessage;
+    private ImageView mViewDiscover;
+    private ImageView mViewProfile;
+    private ImageView mViewAdd;
+    private AddView viewAdd;
 
 
     private FragmentManager fm;
@@ -69,6 +57,17 @@ public class VisitorMainActivity extends BaseCommonActivity {
 
     @Override
     protected void initView() {
+        mLayout = findViewById(R.id.layout_container);
+        layoutHome = findViewById(R.id.layout_tabbar_home);
+        layoutMessage = findViewById(R.id.layout_tabbar_message);
+        layoutDiscover = findViewById(R.id.layout_tabbar_discover);
+        layoutProfile = findViewById(R.id.layout_tabbar_profile);
+        mViewHome = findViewById(R.id.iv_tabbar_home);
+        mViewMessage = findViewById(R.id.iv_tabbar_message);
+        mViewDiscover = findViewById(R.id.iv_tabbar_discover);
+        mViewProfile = findViewById(R.id.iv_tabbar_profile);
+        mViewAdd = findViewById(R.id.iv_tabbar_add);
+        viewAdd = findViewById(R.id.view_add);
         setTabSelection(0);
         RxView.clicks(layoutHome)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))

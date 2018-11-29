@@ -1,6 +1,5 @@
-package sunxl8.my_weibo.ui.base;
+package sun.xiaolei.m_common.base;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
@@ -11,15 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jakewharton.rxbinding2.view.RxView;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import sun.xiaolei.m_common.R;
 import sunxl8.library.swipeback.SwipeBackActivityBase;
 import sunxl8.library.swipeback.SwipeBackActivityHelper;
 import sunxl8.library.swipeback.SwipeBackLayout;
 import sunxl8.library.swipeback.Utils;
-import sunxl8.my_weibo.R;
 
 /**
  * Created by sunxl8 on 2017/4/20.
@@ -28,15 +23,10 @@ import sunxl8.my_weibo.R;
 public abstract class BaseSwipeActivity<T extends IPresenter> extends BaseActivity implements IView, SwipeBackActivityBase {
 
     protected T mPresenter;
-    protected Unbinder mUnbinder;
     private SwipeBackActivityHelper mHelper;
 
-    @Nullable
-    @BindView(R.id.tv_topbar_title)
     protected TextView mTitle;
-    @Nullable
-    @BindView(R.id.iv_topbar_back)
-    ImageView mBack;
+    protected ImageView mBack;
 
     @Override
     @CallSuper
@@ -49,7 +39,8 @@ public abstract class BaseSwipeActivity<T extends IPresenter> extends BaseActivi
         mHelper = new SwipeBackActivityHelper(this);
         mHelper.onActivityCreate();
         setContentView(setContentViewId());
-        mUnbinder = ButterKnife.bind(this);
+        mTitle = (TextView) findViewById(R.id.tv_topbar_title);
+        mBack = (ImageView) findViewById(R.id.iv_topbar_back);
         if (mBack != null) {
             RxView.clicks(mBack)
                     .subscribe(aVoid -> {
@@ -95,13 +86,12 @@ public abstract class BaseSwipeActivity<T extends IPresenter> extends BaseActivi
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) mPresenter.detachView();
-        if (mUnbinder != null) mUnbinder.unbind();
     }
 
     public void hideKeyboard() {
         View view = getWindow().peekDecorView();
         if (view != null) {
-            InputMethodManager inputmanger = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager inputmanger = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }

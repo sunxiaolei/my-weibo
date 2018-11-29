@@ -9,12 +9,11 @@ import com.bumptech.glide.request.RequestOptions;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
-import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sun.xiaolei.m_wblib.entity.UserInfo;
 import sun.xiaolei.m_wblib.utils.DataHolder;
 import sunxl8.my_weibo.R;
-import sunxl8.my_weibo.ui.base.BaseFragment;
+import sun.xiaolei.m_common.base.BaseFragment;
 import sunxl8.my_weibo.ui.profile.friends.FriendsActivity;
 import sunxl8.my_weibo.ui.setting.SettingActivity;
 import sunxl8.myutils.StringUtils;
@@ -25,25 +24,16 @@ import sunxl8.myutils.StringUtils;
 
 public class ProfileFragment extends BaseFragment<ProfilePresenter> implements ProfileContract.View {
 
-    @BindView(R.id.tv_navigation_setting)
-    TextView tvSetting;
-    @BindView(R.id.tv_profile_name)
-    TextView tvName;
-    @BindView(R.id.tv_profile_brief)
-    TextView tvBrief;
-    @BindView(R.id.iv_profile_headicon)
-    CircleImageView ivHeadicon;
-    @BindView(R.id.tv_profile_vip)
-    TextView tvIsVip;
-    @BindView(R.id.tv_profile_weibo)
-    TextView tvWeibo;
-    @BindView(R.id.tv_profile_attention)
-    TextView tvAttention;
-    @BindView(R.id.tv_profile_fans)
-    TextView tvFans;
+    private TextView tvSetting;
+    private TextView tvName;
+    private TextView tvBrief;
+    private CircleImageView ivHeadicon;
+    private TextView tvIsVip;
+    private TextView tvWeibo;
+    private TextView tvAttention;
+    private TextView tvFans;
 
-    @BindView(R.id.layout_profile_attention)
-    LinearLayout layoutAttention;
+    private LinearLayout layoutAttention;
 
     @Override
     protected ProfilePresenter createPresenter() {
@@ -62,6 +52,15 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements P
 
     @Override
     protected void initView() {
+        tvSetting = findViewById(R.id.tv_navigation_setting);
+        tvName = findViewById(R.id.tv_profile_name);
+        tvBrief = findViewById(R.id.tv_profile_brief);
+        ivHeadicon = findViewById(R.id.iv_profile_headicon);
+        tvIsVip = findViewById(R.id.tv_profile_vip);
+        tvWeibo = findViewById(R.id.tv_profile_weibo);
+        tvAttention = findViewById(R.id.tv_profile_attention);
+        tvFans = findViewById(R.id.tv_profile_fans);
+        layoutAttention = findViewById(R.id.layout_profile_attention);
         RxView.clicks(tvSetting)
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe(aVoid -> {

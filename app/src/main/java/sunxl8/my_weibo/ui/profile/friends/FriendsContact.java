@@ -3,8 +3,8 @@ package sunxl8.my_weibo.ui.profile.friends;
 import java.util.Map;
 
 import sun.xiaolei.m_wblib.entity.Friends;
-import sunxl8.my_weibo.ui.base.IPresenter;
-import sunxl8.my_weibo.ui.base.IView;
+import sun.xiaolei.m_common.base.IPresenter;
+import sun.xiaolei.m_common.base.IView;
 
 /**
  * Created by sunxl8 on 2017/5/10.
