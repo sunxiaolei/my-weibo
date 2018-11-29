@@ -65,6 +65,15 @@ public class UserInfo {
     private boolean follow_me;
     private int online_status;
     private int bi_followers_count;
+    private String cover_image_phone;
+
+    public String getCover_image_phone() {
+        return cover_image_phone.replace("crop.0.0.640.640.640", "crop.0.0.0.0.0");
+    }
+
+    public void setCover_image_phone(String cover_image_phone) {
+        this.cover_image_phone = cover_image_phone;
+    }
 
     public long getId() {
         return id;

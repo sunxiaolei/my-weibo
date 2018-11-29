@@ -11,10 +11,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.jaeger.library.StatusBarUtil;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
-import sunxl8.myutils.StatusBarUtils;
-
+import sun.xiaolei.m_common.R;
 
 /**
  * Created by sunxl8 on 2017/4/20.
@@ -27,9 +27,7 @@ public class BaseActivity extends RxAppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        StatusBarUtils.from(this)
-                .setLightStatusBar(true)
-                .process(this);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorAccent));
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
     }

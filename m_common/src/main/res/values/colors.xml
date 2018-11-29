@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#424242</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
-    <color name="colorAccent">#FF8200</color>
+    <color name="colorAccent">#007ee5</color>
     <color name="colorBgTabbar">#FFFFFF</color>
     <color name="colorLineRadar">#000000</color>
     <color name="colorLineCommon">#DCDCDC</color>
@@ -31,4 +31,7 @@
     <color name="colorTextItemPrimary">#333333</color>
     <color name="colorTextItemSecondary">#999999</color>
     <color name="colorTextVip">#f46200</color>
+
+    <color name="colorTextProfile">#FFFFFF</color>
+    <color name="ProfileButton">#55acee</color>
 </resources>
